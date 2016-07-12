@@ -1,6 +1,7 @@
 <?php
 
 use App\Item;
+use App\Recipe;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,12 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) {
         'quantity' => $faker->randomFloat(),
         'name' => $faker->name,
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Recipe::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
     ];
 });
 
