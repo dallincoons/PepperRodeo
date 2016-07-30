@@ -6,10 +6,23 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 use App\Recipe;
 use App\User;
+use App\Item;
 
-class Article extends TestCase
+class RecipeTest extends TestCase
 {
     use DatabaseTransactions;
+
+    private $MainUser;
+    private $MainRecipe;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->MainUser = factory(User::class)->create();
+        $this->MainRecipe = factory(Recipe::class)->create(['user_id' => $this->MainUser->id]);
+    }
+
     /**
      * A basic test example.
      *
@@ -18,13 +31,12 @@ class Article extends TestCase
      */
     public function copy_recipe_to_another_user()
     {
-        $user = factory(User::class)->create();
-        $user2 = factory(User::class)->create();
+        $newUser = factory(User::class)->create();
 
-        $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
-        $recipe->copyTo($user2);
+        $this->MainRecipe->copyTo($newUser);
 
-        $this->assertCount(1, Recipe::where('user_id', '=', $user->id)->get());
-        $this->assertCount(1, Recipe::where('user_id', '=', $user2->id)->get());
+        $this->assertCount(1, Recipe::where('user_id', '=', $this->MainUser->id)->get());
+        $this->assertCount(1, Recipe::where('user_id', '=', $newUser->id)->get());
     }
+
 }

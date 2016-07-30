@@ -34,6 +34,7 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) {
 $factory->define(App\Recipe::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
+        'user_id' => App\User::all()->random()->id
     ];
 });
 

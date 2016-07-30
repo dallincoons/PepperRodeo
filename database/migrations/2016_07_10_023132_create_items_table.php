@@ -15,6 +15,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->float('quantity');
+            $table->integer('recipe_id')->unsigned();
+            $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->string('name');
             $table->rememberToken();
             $table->timestamps();
