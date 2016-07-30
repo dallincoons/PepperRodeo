@@ -19,4 +19,11 @@ class Recipe extends Model
         $recipeClone->user_id = $user->id;
         $recipeClone->save();
     }
+
+    public function addItem(array $data)
+    {
+        $data = array_merge($data, ['recipe_id' => $this->id]);
+
+        (new Item($data))->save();
+    }
 }

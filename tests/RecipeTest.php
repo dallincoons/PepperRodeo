@@ -39,4 +39,19 @@ class RecipeTest extends TestCase
         $this->assertCount(1, Recipe::where('user_id', '=', $newUser->id)->get());
     }
 
+    /**
+     * @test
+     */
+    public function add_item_to_recipe_from_array()
+    {
+        factory(Item::class)->create(['recipe_id' => $this->MainRecipe->id]);
+        $itemCount = $this->MainRecipe->items()->get()->count();
+
+        $this->MainRecipe->addItem([
+            'quantity' => 2,
+            'name' => 'Ketchup'
+        ]);
+
+        $this->assertEquals(count($this->MainRecipe->items()->get()), ($itemCount + 1));
+    }
 }
