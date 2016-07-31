@@ -54,4 +54,12 @@ class RecipeTest extends TestCase
 
         $this->assertEquals(count($this->MainRecipe->items()->get()), ($itemCount + 1));
     }
+
+    /**
+     * @test
+     */
+     public function assign_recipe_a_category()
+     {
+
+     }
 }
