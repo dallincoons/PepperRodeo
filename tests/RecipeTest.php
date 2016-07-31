@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Recipe;
 use App\User;
 use App\Item;
+use App\RecipeCategory;
 
 class RecipeTest extends TestCase
 {
@@ -60,6 +61,9 @@ class RecipeTest extends TestCase
      */
      public function assign_recipe_a_category()
      {
+        $recipeCategory = RecipeCategory::find(3);
+        $this->MainRecipe->assignCategory($recipeCategory->id);
 
+        $this->assertEquals($this->MainRecipe->category, $recipeCategory->id);
      }
 }

@@ -26,4 +26,9 @@ class Recipe extends Model
 
         (new Item($data))->save();
     }
+
+    public function assignCategory()
+    {
+
+    }
 }
