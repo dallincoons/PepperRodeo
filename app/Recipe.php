@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
+use App\RecipeCategory;
 
 class Recipe extends Model
 {
@@ -11,6 +12,11 @@ class Recipe extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(RecipeCategory::class);
     }
 
     public function copyTo($user)
@@ -27,8 +33,10 @@ class Recipe extends Model
         (new Item($data))->save();
     }
 
-    public function assignCategory()
+    public function assignCategory($category_id)
     {
+        $this->category_id = $category_id;
 
+        $this->save();
     }
 }

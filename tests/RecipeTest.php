@@ -64,6 +64,6 @@ class RecipeTest extends TestCase
         $recipeCategory = RecipeCategory::find(3);
         $this->MainRecipe->assignCategory($recipeCategory->id);
 
-        $this->assertEquals($this->MainRecipe->category, $recipeCategory->id);
+        $this->assertEquals($recipeCategory->id, $this->MainRecipe->category->id);
      }
 }
