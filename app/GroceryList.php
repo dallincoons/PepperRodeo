@@ -26,6 +26,10 @@ class GroceryList extends Model
     {
         $this->recipes()->attach($recipe->id);
     }
+    public function removeRecipe($recipe)
+    {
+        $this->recipes()->detach($recipe);
+    }
 
     public function checkOffItem($item)
     {

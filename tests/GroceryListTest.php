@@ -28,7 +28,7 @@ class GroceryListTest extends TestCase
      * @group GroceryList
      * @test
      */
-    public function add_item_to_recipe_from_array()
+    public function add_item_to_grocery_list_from_array()
     {
         $this->createItem();
         $itemCount = $this->getItemCount();
@@ -52,6 +52,21 @@ class GroceryListTest extends TestCase
         $this->GroceryList->addRecipe($recipe);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function remove_recipe_from_grocery_list()
+    {
+        $recipe = $this->createRecipe();
+
+        $this->GroceryList->addRecipe($recipe);
+
+        $this->GroceryList->removeRecipe($recipe);
+
+        $this->assertFalse($this->GroceryList->items->contains($recipe));
     }
 
     /**

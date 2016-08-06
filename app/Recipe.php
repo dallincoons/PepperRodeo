@@ -23,10 +23,15 @@ class Recipe extends Model
     {
         return $this->belongsTo(RecipeCategory::class);
     }
-    //@todo change to groceryList
-    public function recipes()
+
+    public function groceryLists()
     {
         return $this->belongsToMany(GroceryList::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function assignCategory($category_id)
