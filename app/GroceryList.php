@@ -14,7 +14,7 @@ class GroceryList extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsToMany(Item::class);
     }
 
     public function recipes()
@@ -32,5 +32,10 @@ class GroceryList extends Model
         $item->isCheckedOff = 1;
 
         $item->save();
+    }
+
+    public function removeItem($item)
+    {
+        $this->items()->detach($item->id);
     }
 }

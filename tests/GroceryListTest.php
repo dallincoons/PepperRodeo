@@ -95,6 +95,20 @@ class GroceryListTest extends TestCase
         $this->assertEquals(1, $items[2]->isCheckedOff);
     }
 
+    /**
+     * @group GroceryList
+     * @test
+     */
+     public function remove_item_from_grocery_list()
+     {
+         $items = factory(Item::class, 3)->create();
+         $this->GroceryList->addItems($items);
+
+         $this->GroceryList->removeItem($items[2]);
+
+         $this->assertTrue(!$this->GroceryList->items->contains($items[2]));
+     }
+
     private function createItem()
     {
         return factory(Item::class)->create(['recipe_id' => $this->GroceryList->id]);

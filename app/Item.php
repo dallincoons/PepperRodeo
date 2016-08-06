@@ -17,6 +17,6 @@ class Item extends Model
 
     public function groceryList()
     {
-        return $this->belongsTo(GroceryList::class);
+        return $this->belongsToMany(GroceryList::class);
     }
 }
