@@ -2,6 +2,7 @@
 
 use App\Item;
 use App\Recipe;
+use App\GroceryList;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,13 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Recipe::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'user_id' => App\User::all()->random()->id
+    ];
+});
+
+$factory->define(App\GroceryList::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
         'user_id' => App\User::all()->random()->id

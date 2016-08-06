@@ -5,9 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\RecipeCategory;
+use App\Traits\Itemable;
 
 class Recipe extends Model
 {
+    use Itemable;
+
+    private $foreignKey = 'recipe_id';
 
     public function items()
     {
@@ -24,13 +28,6 @@ class Recipe extends Model
         $recipeClone = $this->replicate();
         $recipeClone->user_id = $user->id;
         $recipeClone->save();
-    }
-
-    public function addItem(array $data)
-    {
-        $data = array_merge($data, ['recipe_id' => $this->id]);
-
-        (new Item($data))->save();
     }
 
     public function assignCategory($category_id)

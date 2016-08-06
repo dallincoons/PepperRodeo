@@ -15,8 +15,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->float('quantity');
-            $table->integer('recipe_id')->unsigned();
+            $table->integer('recipe_id')->unsigned()->nullable();
             $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->integer('grocery_list_id')->unsigned()->nullable();
+            $table->foreign('grocery_list_id')->references('id')->on('grocery_list');
             $table->string('name');
             $table->rememberToken();
             $table->timestamps();
