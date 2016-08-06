@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\GroceryList;
 use App\User;
 use App\Item;
+use App\Recipe;
 
 class GroceryListTest extends TestCase
 {
@@ -28,14 +29,41 @@ class GroceryListTest extends TestCase
      */
     public function add_item_to_recipe_from_array()
     {
-        factory(Item::class)->create(['recipe_id' => $this->GroceryList->id]);
-        $itemCount = $this->GroceryList->items()->get()->count();
+        $this->createItem();
+        $itemCount = $this->getItemCount();
 
         $this->GroceryList->addItem([
             'quantity' => 2,
             'name' => 'Ketchup'
         ]);
 
-        $this->assertEquals(count($this->GroceryList->items()->get()), ($itemCount + 1));
+        $this->assertEquals($this->getItemCount(), ($itemCount + 1));
+    }
+
+    /**
+     * @test
+     */
+    public function adds_recipe_to_grocery_list()
+    {
+        $recipe = $this->createRecipe();
+
+        $this->GroceryList->addRecipe($recipe);
+
+        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+    }
+
+    private function createItem()
+    {
+        return factory(Item::class)->create(['recipe_id' => $this->GroceryList->id]);
+    }
+
+    private function getItemCount()
+    {
+        return $this->GroceryList->items()->get()->count();
+    }
+
+    private function createRecipe()
+    {
+        return factory(Recipe::class)->create();
     }
 }

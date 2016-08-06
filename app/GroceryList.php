@@ -15,4 +15,14 @@ class GroceryList extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function recipes()
+    {
+        return $this->belongsToMany(Recipe::class);
+    }
+
+    public function addRecipe($recipe)
+    {
+        $this->recipes()->attach($recipe->id);
+    }
 }

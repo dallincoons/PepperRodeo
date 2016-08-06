@@ -23,6 +23,11 @@ class Recipe extends Model
         return $this->belongsTo(RecipeCategory::class);
     }
 
+    public function recipes()
+    {
+        return $this->belongsToMany(GroceryList::class);
+    }
+
     public function copyTo($user)
     {
         $recipeClone = $this->replicate();
