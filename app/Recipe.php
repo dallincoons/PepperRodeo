@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\RecipeCategory;
 use App\Traits\Itemable;
+use App\Traits\Copyable;
 
 class Recipe extends Model
 {
-    use Itemable;
+    use Itemable, Copyable;
 
     private $foreignKey = 'recipe_id';
 
@@ -26,13 +27,6 @@ class Recipe extends Model
     public function recipes()
     {
         return $this->belongsToMany(GroceryList::class);
-    }
-
-    public function copyTo($user)
-    {
-        $recipeClone = $this->replicate();
-        $recipeClone->user_id = $user->id;
-        $recipeClone->save();
     }
 
     public function assignCategory($category_id)

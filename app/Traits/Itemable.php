@@ -2,13 +2,23 @@
 namespace App\Traits;
 
 use App\Item;
+use Illuminate\Database\Eloquent\Collection;
 
 Trait Itemable
 {
-    public function addItem(array $data)
+    public function addItem($item)
     {
-        $data = array_merge($data, [$this->foreignKey => $this->id]);
+        if(is_array($item)){
+            $item = new Item($item);
+        }
 
-        (new Item($data))->save();
+        $this->items()->save($item);
+    }
+
+    public function addItems($items)
+    {
+        foreach($items as $item){
+            $this->addItem($item);
+        }
     }
 }

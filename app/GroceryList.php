@@ -3,11 +3,12 @@
 namespace App;
 
 use App\Traits\Itemable;
+use App\Traits\Copyable;
 use Illuminate\Database\Eloquent\Model;
 
 class GroceryList extends Model
 {
-    use Itemable;
+    use Itemable, Copyable;
 
     private $foreignKey = 'grocery_list_id';
 

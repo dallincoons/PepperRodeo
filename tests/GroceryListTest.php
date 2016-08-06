@@ -25,6 +25,7 @@ class GroceryListTest extends TestCase
     }
 
     /**
+     * @group GroceryList
      * @test
      */
     public function add_item_to_recipe_from_array()
@@ -41,6 +42,7 @@ class GroceryListTest extends TestCase
     }
 
     /**
+     * @group GroceryList
      * @test
      */
     public function adds_recipe_to_grocery_list()
@@ -50,6 +52,44 @@ class GroceryListTest extends TestCase
         $this->GroceryList->addRecipe($recipe);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function adds_items_to_grocery_list()
+    {
+        $items = factory(Item::class, 3)->create();
+
+        $this->GroceryList->addItems($items);
+
+        $this->assertCount(3, $this->GroceryList->items);
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function copy_grocery_list_to_another_user()
+    {
+        $newUser = factory(User::class)->create();
+
+        $this->GroceryList->copyTo($newUser);
+
+        $this->assertCount(1, GroceryList::where('user_id', '=', $this->MainUser->id)->get());
+        $this->assertCount(1, GroceryList::where('user_id', '=', $newUser->id)->get());
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function check_off_item()
+    {
+        $items = factory(Item::class, 3)->create();
+
+
     }
 
     private function createItem()

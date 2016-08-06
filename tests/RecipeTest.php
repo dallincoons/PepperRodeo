@@ -27,7 +27,7 @@ class RecipeTest extends TestCase
     /**
      * A basic test example.
      *
-     * @return void
+     * @group RecipeTest
      * @test
      */
     public function copy_recipe_to_another_user()
@@ -41,6 +41,7 @@ class RecipeTest extends TestCase
     }
 
     /**
+     * @group RecipeTest
      * @test
      */
     public function add_item_to_recipe_from_array()
@@ -57,6 +58,7 @@ class RecipeTest extends TestCase
     }
 
     /**
+     * @group RecipeTest
      * @test
      */
      public function assign_recipe_a_category()
