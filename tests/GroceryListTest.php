@@ -88,8 +88,11 @@ class GroceryListTest extends TestCase
     public function check_off_item()
     {
         $items = factory(Item::class, 3)->create();
+        $this->GroceryList->addItems($items);
 
+        $this->GroceryList->checkOffItem($items[2]);
 
+        $this->assertEquals(1, $items[2]->isCheckedOff);
     }
 
     private function createItem()

@@ -6,5 +6,5 @@ Homestead.json
 .*
 .env
 .gitignore
-/.idea
+.idea/workspace.xml
 database.sqlite_testing

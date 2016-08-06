@@ -28,6 +28,7 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) {
     return [
         'quantity' => $faker->randomFloat(),
         'name' => $faker->name,
+        'isCheckedOff' => 0,
         'remember_token' => str_random(10),
     ];
 });

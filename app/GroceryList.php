@@ -26,4 +26,11 @@ class GroceryList extends Model
     {
         $this->recipes()->attach($recipe->id);
     }
+
+    public function checkOffItem($item)
+    {
+        $item->isCheckedOff = 1;
+
+        $item->save();
+    }
 }
