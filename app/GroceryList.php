@@ -14,7 +14,7 @@ class GroceryList extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->morphMany(Item::class, 'itemable');
     }
 
     public function recipes()
@@ -40,6 +40,6 @@ class GroceryList extends Model
 
     public function removeItem($item)
     {
-        $this->items()->detach($item->id);
+        $item->delete();
     }
 }

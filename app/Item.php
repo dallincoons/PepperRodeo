@@ -19,4 +19,9 @@ class Item extends Model
     {
         return $this->belongsToMany(GroceryList::class);
     }
+
+    public function itemable()
+    {
+        return $this->morphTo();
+    }
 }

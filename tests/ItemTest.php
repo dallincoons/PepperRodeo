@@ -17,19 +17,17 @@ class ItemTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
-        factory(User::class)->create();
-        $this->Recipe = factory(Recipe::class)->create();
-        $this->Item = factory(Item::class)->create(['recipe_id' => $this->Recipe->id]);
+//
+//        factory(User::class)->create();
+//        $this->Recipe = factory(Recipe::class)->create();
+//        $this->Item = factory(Item::class)->create();
     }
 
     /**
      * @test
      */
-    public function find_recipe_that_is_associated_with_this_item()
+    public function example()
     {
-        $actualRecipe = $this->Item->recipe;
 
-        $this->assertEquals($actualRecipe->id, $this->Recipe->id);
     }
 }

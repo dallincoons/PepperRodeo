@@ -46,7 +46,9 @@ class RecipeTest extends TestCase
      */
     public function add_item_to_recipe_from_array()
     {
-        factory(Item::class)->create(['recipe_id' => $this->MainRecipe->id]);
+        $item = factory(Item::class)->create();
+        $this->MainRecipe->items()->save($item);
+
         $itemCount = $this->MainRecipe->items()->get()->count();
 
         $this->MainRecipe->addItem([

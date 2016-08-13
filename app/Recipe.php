@@ -16,7 +16,7 @@ class Recipe extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->morphMany(Item::class, 'itemable');
     }
 
     public function category()

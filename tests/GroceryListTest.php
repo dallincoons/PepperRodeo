@@ -126,7 +126,8 @@ class GroceryListTest extends TestCase
 
     private function createItem()
     {
-        return factory(Item::class)->create(['recipe_id' => $this->GroceryList->id]);
+        $item = factory(Item::class)->create();
+        $this->GroceryList->items()->save($item);
     }
 
     private function getItemCount()

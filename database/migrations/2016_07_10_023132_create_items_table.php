@@ -16,11 +16,9 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('quantity');
-            $table->integer('recipe_id')->unsigned()->nullable();
-            $table->foreign('recipe_id')->references('id')->on('recipes');
-            $table->integer('grocery_list_id')->unsigned()->nullable();
-            $table->foreign('grocery_list_id')->references('id')->on('grocery_list');
             $table->integer('isCheckedOff')->default(0);
+            $table->integer('itemable_id')->nullable();
+            $table->string('itemable_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
