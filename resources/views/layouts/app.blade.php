@@ -77,31 +77,7 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="es6-shim/es6-shim.min.js"></script>
-    <script src="/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="angular2/bundles/angular2-polyfills.js"></script>
-    <script src="systemjs/dist/system.src.js"></script>
-    <script src="rxjs/bundles/Rx.js"></script>
-    <script src="angular2/bundles/angular2.dev.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script>
-        System.config({
-            "defaultJSExtensions": true,
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-
-
-        System.import('boot')
-                .then(null, console.error.bind(console));
-    </script>
-    </head>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

@@ -20,5 +20,10 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/home', 'HomeController@index');
 
+    Route::group(['middleware' => ['auth']], function(){
+
+        Route::resource('recipe', 'RecipeController');
+
+    });
 });
 
