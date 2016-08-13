@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Recipe;
 
 use App\Http\Requests;
 
@@ -19,7 +20,7 @@ class RecipeController extends Controller
 
         $recipes = $user->recipes;
 
-        return view('recipes/show-all-recipes', compact('recipes'));
+        return view('recipes.show-all-recipes', compact('recipes'));
     }
 
     /**
@@ -49,9 +50,9 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Recipe $recipe)
     {
-        //
+        return view('recipes.single-recipe', compact('recipe'));
     }
 
     /**

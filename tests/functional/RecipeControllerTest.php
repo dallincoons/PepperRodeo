@@ -10,16 +10,18 @@ use App\Item;
 class RecipeControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use testHelpers;
 
     protected $Recipes;
+    protected $user;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->buildSampleRecipe();
+        $this->signIn();
 
-        $this->be($this->user);
+        $this->buildSampleRecipe();
     }
 
     /**
@@ -36,9 +38,21 @@ class RecipeControllerTest extends TestCase
              ->see($lastRecipe->title);
     }
 
+    /**
+     * @group recipe-controller
+     * @test
+     */
+    public function click_recipe_link_and_visit_individual_recipe_page()
+    {
+        $firstRecipe = $this->Recipes->first();
+
+        $this->visit('recipe')
+            ->click($firstRecipe->title)
+            ->see($firstRecipe->title);
+    }
+
     private function buildSampleRecipe()
     {
-        $this->user = factory(User::class)->create();
         $this->user->recipes()->save(factory(Recipe::class)->make());
         $this->Recipes = factory(Recipe::class, 3)
             ->create(['user_id' => $this->user->id])
@@ -47,5 +61,4 @@ class RecipeControllerTest extends TestCase
             });
 
     }
-
 }
