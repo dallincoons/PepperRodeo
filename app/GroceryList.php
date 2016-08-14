@@ -12,6 +12,11 @@ class GroceryList extends Model
 
     private $foreignKey = 'grocery_list_id';
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function items()
     {
         return $this->morphMany(Item::class, 'itemable');

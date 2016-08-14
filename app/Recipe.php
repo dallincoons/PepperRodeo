@@ -16,6 +16,11 @@ class Recipe extends Model
 
     protected $fillable = array('user_id', 'title');
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function items()
     {
         return $this->morphMany(Item::class, 'itemable');
@@ -29,11 +34,6 @@ class Recipe extends Model
     public function groceryLists()
     {
         return $this->belongsToMany(GroceryList::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function assignCategory($category_id)
