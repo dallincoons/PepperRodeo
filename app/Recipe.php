@@ -14,6 +14,8 @@ class Recipe extends Model
 
     private $foreignKey = 'recipe_id';
 
+    protected $fillable = array('user_id', 'title');
+
     public function items()
     {
         return $this->morphMany(Item::class, 'itemable');

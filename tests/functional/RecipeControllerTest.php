@@ -21,7 +21,6 @@ class RecipeControllerTest extends TestCase
 
         $this->signIn();
 
-        $this->buildSampleRecipe();
     }
 
     /**
@@ -30,6 +29,8 @@ class RecipeControllerTest extends TestCase
      */
     public function views_recipe_dashboard_and_views_links_for_recipes()
     {
+        $this->buildSampleRecipe();
+
         $firstRecipe = $this->Recipes->first();
         $lastRecipe = $this->Recipes->last();
 
@@ -44,11 +45,35 @@ class RecipeControllerTest extends TestCase
      */
     public function click_recipe_link_and_visit_individual_recipe_page()
     {
+        $this->buildSampleRecipe();
+
         $firstRecipe = $this->Recipes->first();
 
         $this->visit('recipe')
             ->click($firstRecipe->title)
             ->see($firstRecipe->title);
+    }
+
+    /**
+     * @group recipe-controller
+     * @test
+     */
+    public function submit_from_to_create_a_new_recipe()
+    {
+        $recipeTitle = 'Creamy Chicken and Rice';
+        $recipeItems = [['quantity' => 2, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'name' => 'lbs of chicken']];
+
+        $this->visit('recipe/create');
+
+        //@todo create dynamic form
+
+        $this->json('POST', 'recipe', ['title' => $recipeTitle, 'recipeFields' => $recipeItems]);
+
+        $recipe = $this->user->recipes()->first();
+
+        $this->assertEquals($recipeTitle, $recipe->title);
+        $this->assertEquals($recipeItems[0]['name'], $recipe->items()->first()->name);
+        $this->assertEquals($recipeItems[1]['name'], $recipe->items()->find(2)->name);
     }
 
     private function buildSampleRecipe()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipe;
+use App\Item;
 
 use App\Http\Requests;
 
@@ -30,7 +31,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipes.add-recipe');
     }
 
     /**
@@ -41,7 +42,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipe = Recipe::create(['user_id' => $this->user->id, 'title' => $request->title]);
+        foreach($request->input('recipeFields') as $itemJson)
+        {
+            $item = Item::create($itemJson);
+
+            $recipe->items()->save($item);
+
+        }
+
     }
 
     /**
@@ -61,9 +70,9 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Recipe $recipe)
     {
-        //
+        return view('recipes.edit-single', compact('recipe'));
     }
 
     /**
