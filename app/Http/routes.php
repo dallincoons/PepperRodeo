@@ -24,7 +24,7 @@ Route::group(['middleware' => ['web']], function() {
 
         Route::resource('recipe', 'RecipeController');
 
-        Route::resource('grocerylists', 'GroceryListController');
+        Route::resource('grocerylist', 'GroceryListController');
 
     });
 });

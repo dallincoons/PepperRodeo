@@ -33,9 +33,25 @@ class GroceryListControllerTest extends TestCase
         $firstlist = $this->GroceryList->first();
         $lastlist = $this->GroceryList->last();
 
-        $this->visit('grocerylists')
+        $this->visit('grocerylist')
             ->see($firstlist->title)
             ->see($lastlist->title);
+    }
+
+    /**
+     * @group grocery-list-tests
+     *
+     * @test
+     */
+    public function click_grocerylist_link_and_visit_individual_list_page()
+    {
+        $this->buildSampleGroceryList();
+
+        $firstlist = $this->GroceryList->first();
+
+        $this->visit('grocerylist')
+            ->click($firstlist->title)
+            ->see($firstlist->title);
     }
 
     private function buildSampleGroceryList()

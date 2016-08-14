@@ -2,6 +2,6 @@
 
 @section('content')
     @foreach($grocerylists as $list)
-        <a href="recipe/{{$list->id}}">{{$list->title}}</a>
+        <a href="grocerylist/{{$list->id}}">{{$list->title}}</a>
     @endforeach
 @endsection

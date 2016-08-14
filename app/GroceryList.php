@@ -12,6 +12,8 @@ class GroceryList extends Model
 
     private $foreignKey = 'grocery_list_id';
 
+    protected $fillable = array('user_id', 'title');
+
     public function user()
     {
         return $this->belongsTo(User::class);

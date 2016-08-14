@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\GroceryList;
 
 class GroceryListController extends Controller
 {
@@ -49,9 +50,9 @@ class GroceryListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(GroceryList $grocerylist)
     {
-        //
+        return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }
 
     /**
