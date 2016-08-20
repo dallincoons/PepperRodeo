@@ -1,18 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
-                <my-app>Loading...</my-app>
-            </div>
-        </div>
-    </div>
-</div>
+    <h1>default content</h1>
 @endsection
