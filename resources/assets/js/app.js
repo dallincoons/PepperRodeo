@@ -1,9 +1,8 @@
 import Vue from 'vue';
-import Profile from './Profile.vue';
-import Dump from './Dump.vue';
+import AllGroceryLists from './views/grocerylists/all-grocery-lists.vue';
 
 new Vue({
     el: '#PepperRodeoApp',
-    components: { Profile, Dump }
+    components: { AllGroceryLists }
 });
 

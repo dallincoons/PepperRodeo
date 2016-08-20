@@ -10539,100 +10539,45 @@ setTimeout(function () {
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":1}],4:[function(require,module,exports){
-var inserted = exports.cache = {}
-
-exports.insert = function (css) {
-  if (inserted[css]) return
-  inserted[css] = true
-
-  var elem = document.createElement('style')
-  elem.setAttribute('type', 'text/css')
-
-  if ('textContent' in elem) {
-    elem.textContent = css
-  } else {
-    elem.styleSheet.cssText = css
-  }
-
-  document.getElementsByTagName('head')[0].appendChild(elem)
-  return elem
-}
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
-exports.default = {
-   created: function created() {
-      alert('the dump');
-   }
-};
-if (module.exports.__esModule) module.exports = module.exports.default
-if (module.hot) {(function () {  module.hot.accept()
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  if (!module.hot.data) {
-    hotAPI.createRecord("_v-22af91b8", module.exports)
-  } else {
-    hotAPI.update("_v-22af91b8", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
-  }
-})()}
-},{"vue":3,"vue-hot-reload-api":2}],6:[function(require,module,exports){
-var __vueify_insert__ = require("vueify/lib/insert-css")
-var __vueify_style__ = __vueify_insert__.insert("\n.profile {\n    background: #eee;\n    border: 1px solid #aaa;\n    border-radius: 2em;\n    margin: 2em auto;\n    min-height: 150px;\n    padding: 2em;\n    width: 300px;\n}\n")
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    data: function data() {
-        return {
-            name: 'Dallin Coons'
-        };
-    }
-};
-if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-md-10 col-md-offset-1\">\n            <div class=\"panel panel-default\">\n                <div class=\"panel-heading\">Welcome</div>\n\n                <div class=\"panel-body\">\n                    Your Application's Landing Page.\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"profile\">\n    {{ name }}\n</div>\n"
-if (module.hot) {(function () {  module.hot.accept()
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.dispose(function () {
-    __vueify_insert__.cache["\n.profile {\n    background: #eee;\n    border: 1px solid #aaa;\n    border-radius: 2em;\n    margin: 2em auto;\n    min-height: 150px;\n    padding: 2em;\n    width: 300px;\n}\n"] = false
-    document.head.removeChild(__vueify_style__)
-  })
-  if (!module.hot.data) {
-    hotAPI.createRecord("_v-7863bdd6", module.exports)
-  } else {
-    hotAPI.update("_v-7863bdd6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
-  }
-})()}
-},{"vue":3,"vue-hot-reload-api":2,"vueify/lib/insert-css":4}],7:[function(require,module,exports){
 'use strict';
 
 var _vue = require('vue');
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _Profile = require('./Profile.vue');
+var _allGroceryLists = require('./views/grocerylists/all-grocery-lists.vue');
 
-var _Profile2 = _interopRequireDefault(_Profile);
-
-var _Dump = require('./Dump.vue');
-
-var _Dump2 = _interopRequireDefault(_Dump);
+var _allGroceryLists2 = _interopRequireDefault(_allGroceryLists);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 new _vue2.default({
     el: '#PepperRodeoApp',
-    components: { Profile: _Profile2.default, Dump: _Dump2.default }
+    components: { AllGroceryLists: _allGroceryLists2.default }
 });
 
-},{"./Dump.vue":5,"./Profile.vue":6,"vue":3}]},{},[7]);
+},{"./views/grocerylists/all-grocery-lists.vue":5,"vue":3}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    created: function created() {
+        alert('test22423234');
+    }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-94d0f272", module.exports)
+  } else {
+    hotAPI.update("_v-94d0f272", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":3,"vue-hot-reload-api":2}]},{},[4]);
 
 //# sourceMappingURL=app.js.map
