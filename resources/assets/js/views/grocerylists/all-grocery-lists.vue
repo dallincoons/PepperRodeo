@@ -1,7 +1,7 @@
 <script>
     export default {
         created () {
-            alert('test22423234');
+            alert('you reached grocery lists');
         }
     }
 </script>
