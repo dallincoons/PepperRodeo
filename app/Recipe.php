@@ -12,6 +12,7 @@ class Recipe extends Model
 {
     use Itemable, Copyable;
 
+    public $timestamps = true;
     private $foreignKey = 'recipe_id';
 
     protected $fillable = array('user_id', 'title');

@@ -13,7 +13,7 @@ class ListBuilder
         $items = static::mapNameToLowerCase($items);
         $items = $items->keyBy('id');
 
-        foreach($items as &$item)
+        foreach($items as $item)
         {
             $likeItems = static::findLikeItems($items, $item);
 

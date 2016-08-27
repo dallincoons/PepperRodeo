@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,13 +12,9 @@
 */
 Route::group(['middleware' => ['web']], function() {
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
 
     Route::group(['middleware' => ['auth']], function(){
 
