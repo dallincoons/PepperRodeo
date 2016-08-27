@@ -24,8 +24,6 @@ class UserHome extends TestCase
         $this->be($this->User);
     }
     /**
-     * A basic test example.
-     *
      * @group UserHome
      *
      * @return void
@@ -45,6 +43,48 @@ class UserHome extends TestCase
             ->see($exampleRecipe->title)
             ->see($exampleRecipe2->title)
             ->dontSee($exampleRecipe3->title);
+    }
+
+    /**
+     * @group UserHome
+     *
+     * @test
+     */
+    public function click_recipe_on_front_page()
+    {
+        $exampleRecipe = $this->exampleRecipeWithItems(5);
+        $exampleRecipe2 = $this->exampleRecipeWithItems(3);
+
+        $this->User->recipes()->save($exampleRecipe);
+        $this->User->recipes()->save($exampleRecipe2);
+
+        $this->visit('/')
+             ->click($exampleRecipe->title)
+             ->seePageIs('/recipe/' . $exampleRecipe->id);
+    }
+
+    /**
+     * @group UserHome
+     *
+     * @test
+     */
+    public function click_add_to_recipe_link()
+    {
+        $this->visit('/')
+             ->click('Add a Recipe')
+             ->seePageIs('/recipe/create');
+    }
+
+    /**
+     * @group UserHome
+     *
+     * @test
+     */
+    public function click_add_grocerylist_link()
+    {
+        $this->visit('/')
+             ->click('Create a Grocery List')
+             ->seePageIs('/grocerylist/create');
     }
 
     protected function exampleRecipeWithItems($howMany, $attributes = [])
