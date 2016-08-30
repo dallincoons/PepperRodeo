@@ -51,6 +51,8 @@ class RecipeController extends Controller
 
         }
 
+        return response($recipe, 200);
+
     }
 
     /**
