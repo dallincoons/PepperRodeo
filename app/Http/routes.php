@@ -16,12 +16,12 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomeController@index');
 
-    Route::group(['middleware' => ['auth']], function(){
-
-        Route::resource('recipe', 'RecipeController');
-
-        Route::resource('grocerylist', 'GroceryListController');
-
-    });
 });
 
+Route::group(['middleware' => ['web', 'auth']], function(){
+
+    Route::resource('recipe', 'RecipeController');
+
+    Route::resource('grocerylist', 'GroceryListController');
+
+});

@@ -7,11 +7,13 @@ use App\GroceryList;
 use App\User;
 use App\Item;
 use App\Recipe;
+use Illuminate\Http\Request;
 
 class GroceryListTest extends TestCase
 {
 
     use DatabaseTransactions;
+    use testHelpers;
 
     private $MainUser;
     private $GroceryList;
@@ -19,6 +21,8 @@ class GroceryListTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+
+        $this->signIn();
 
         $this->MainUser = factory(User::class)->create();
         $this->GroceryList = factory(GroceryList::class)->create(['user_id' => $this->MainUser->id]);
@@ -52,6 +56,34 @@ class GroceryListTest extends TestCase
         $this->GroceryList->addRecipe($recipe);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function adds_existing_recipe_to_grocery_list_through_http()
+    {
+        $recipe = factory(Recipe::class)->create();
+
+        $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]);
+        app()->handle($request);
+
+        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
+    public function adds_new_recipe_to_grocery_list_through_http()
+    {
+        $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => 0, 'title' => 'Creamy Chicken and Broccoli', 'items' => [['quantity' => 2, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'name' => 'lbs of chicken']]]);
+        app()->handle($request);
+
+        $recipe = $this->GroceryList->recipes()->first();
+        $this->assertEquals('Creamy Chicken and Broccoli', $recipe->title);
     }
 
     /**

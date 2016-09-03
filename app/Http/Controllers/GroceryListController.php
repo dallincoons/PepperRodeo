@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\GroceryList;
+use App\Recipe;
+use Illuminate\Http\Response;
 
 class GroceryListController extends Controller
 {
@@ -72,10 +74,21 @@ class GroceryListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @PUT/PATCH
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GroceryList $grocerylist)
     {
-        //
+        if($request->recipe_id === null || $request->recipe_id < 1)
+        {
+            $newRecipe = Recipe::create(['user_id' => \Auth::User()->getKey(), 'title' => $request->title]);
+            $newRecipe->addItems($request->items);
+            $grocerylist->addRecipe($newRecipe);
+            return new Response();
+        }
+
+        $recipe = Recipe::findOrFail($request->recipe_id);
+
+        $grocerylist->addRecipe($recipe);
     }
 
     /**
