@@ -7,3 +7,5 @@ Homestead.json
 .gitignore
 /.idea*
 database.sqlite_testing
+
+tests/_output/*

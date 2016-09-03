@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+        <ul>
         @foreach($recipes as $recipe)
-            <a href="recipe/{{$recipe->id}}">{{$recipe->title}}</a>
+            <li><a href="recipe/{{$recipe->id}}">{{$recipe->title}}</a></li>
         @endforeach
+        </ul>
 @endsection

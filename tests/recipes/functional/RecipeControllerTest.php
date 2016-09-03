@@ -58,6 +58,20 @@ class RecipeControllerTest extends TestCase
      * @group recipe-controller
      * @test
      */
+    public function click_link_to_add_recipe_to_grocery_list()
+    {
+        $firstRecipe = Recipe::first();
+
+        $this->visit('recipe/' . $firstRecipe->getKey())
+            ->see('Add to Grocery List')
+            ->click('Add to Grocery List')
+            ->see('Grocery Lists');
+    }
+
+    /**
+     * @group recipe-controller
+     * @test
+     */
     public function submit_form_to_create_a_new_recipe()
     {
         $recipeTitle = 'Creamy Chicken and Rice';
