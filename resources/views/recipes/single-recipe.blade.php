@@ -7,5 +7,10 @@
             <li>{{$item->quantity}} {{$item->name}}</li>
         @endforeach
     </ul>
-    <a>Add to Grocery List</a>
+    <h1>Add to Grocery List</h1>
+    <ul>
+    @foreach(\Auth::user()->groceryLists as $grocerylist)
+        <li>{{$grocerylist->title}}</li>
+    @endforeach
+    </ul>
 @endsection

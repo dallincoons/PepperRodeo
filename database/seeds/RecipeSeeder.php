@@ -19,7 +19,7 @@ class RecipeSeeder extends Seeder
         foreach(range(1, 8) as $index){
 
             $recipe = Recipe::create([
-                'user_id' => User::first()->getKey(),
+                'user_id' => 1,
                 'title' => $faker->word
             ]);
 
