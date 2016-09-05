@@ -51,7 +51,7 @@ class RecipeController extends Controller
 
         }
 
-        return response($recipe, 200);
+        return redirect('/recipe');
 
     }
 

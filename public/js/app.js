@@ -12061,6 +12061,10 @@ var _singleRecipe = require('./views/recipe/single-recipe.vue');
 
 var _singleRecipe2 = _interopRequireDefault(_singleRecipe);
 
+var _addRecipe = require('./views/recipe/add-recipe.vue');
+
+var _addRecipe2 = _interopRequireDefault(_addRecipe);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(require('vue-resource'));
@@ -12068,10 +12072,10 @@ _vue2.default.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#tok
 
 new _vue2.default({
     el: '#PepperRodeoApp',
-    components: { AllGroceryLists: _allGroceryLists2.default, SingleRecipe: _singleRecipe2.default }
+    components: { AllGroceryLists: _allGroceryLists2.default, SingleRecipe: _singleRecipe2.default, AddRecipe: _addRecipe2.default }
 });
 
-},{"./views/grocerylists/all-grocery-lists.vue":6,"./views/recipe/single-recipe.vue":7,"vue":4,"vue-resource":3}],6:[function(require,module,exports){
+},{"./views/grocerylists/all-grocery-lists.vue":6,"./views/recipe/add-recipe.vue":7,"./views/recipe/single-recipe.vue":8,"vue":4,"vue-resource":3}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -12094,6 +12098,36 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"vue":4,"vue-hot-reload-api":2}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    data: function data() {
+        return {
+            recipeItemElement: '<input type="text">',
+            recipeItems: ['']
+        };
+    },
+    methods: {
+        addNewItem: function addNewItem() {
+            this.recipeItems.push('');
+        }
+    }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-19cfaf34", module.exports)
+  } else {
+    hotAPI.update("_v-19cfaf34", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":4,"vue-hot-reload-api":2}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

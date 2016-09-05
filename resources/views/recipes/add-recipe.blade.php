@@ -1,15 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.app', ['vue' => 'add-recipe'])
 
 @section('content')
     {!! Form::open(array('url' => '/recipe')) !!}
+        <p>Title: <input name="title"></p>
+        <p v-for="item in recipeItems" track-by="$index">
+            Qty: {!! Form::text('recipeFields[@{{$index}}][quantity]') !!}
+            Name: {!! Form::text('recipeFields[@{{$index}}][name]]') !!}
+        </p>
 
-    {!! Form::text('recipeFields[0][qty]') !!}
-    {!! Form::text('recipeFields[0][item_name]]') !!}
-
-    {!! Form::text('recipeFields[1][qty]') !!}
-    {!! Form::text('recipeFields[1][item_name]') !!}
-
-    {!! Form::button('Add New Item') !!}
+    {!! Form::button('Add New Item', ['@click' => 'addNewItem()']) !!}
     {!! Form::submit('Create') !!}
     {!! Form::close() !!}
 @endsection
