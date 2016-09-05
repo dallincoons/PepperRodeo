@@ -78,6 +78,7 @@ class GroceryListController extends Controller
      */
     public function update(Request $request, GroceryList $grocerylist)
     {
+        //@todo - check if recip is already associated with grocery list?
         if($request->recipe_id === null || $request->recipe_id < 1)
         {
             $newRecipe = Recipe::create(['user_id' => \Auth::User()->getKey(), 'title' => $request->title]);
@@ -89,6 +90,8 @@ class GroceryListController extends Controller
         $recipe = Recipe::findOrFail($request->recipe_id);
 
         $grocerylist->addRecipe($recipe);
+
+        return 'yee haw';
     }
 
     /**

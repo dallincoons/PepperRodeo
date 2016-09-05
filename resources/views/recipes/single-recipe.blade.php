@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['vue' => 'single-recipe'])
 
 @section('content')
     <h1>{{$recipe->title}}</h1>
@@ -9,8 +9,10 @@
     </ul>
     <h1>Add to Grocery List</h1>
     <ul>
-    @foreach(\Auth::user()->groceryLists as $grocerylist)
-        <li>{{$grocerylist->title}}</li>
+    @foreach($listsWithoutRecipe as $grocerylist)
+        <li @click="addToGroceryList({{$grocerylist->getKey()}})">{{$grocerylist->title}}</li>
     @endforeach
     </ul>
+
+<input type="hidden" value="{{$recipe->getKey()}}" v-model="recipeId">
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Recipe;
-use App\User;
+use App\GroceryList;
 use App\Item;
 
 class RecipeControllerTest extends TestCase
@@ -46,8 +46,11 @@ class RecipeControllerTest extends TestCase
     public function click_recipe_link_and_visit_individual_recipe_page()
     {
         $this->buildSampleRecipe();
+        $grocerylists = factory(GroceryList::class, 2)->create(['user_id' => $this->user->id]);
 
         $firstRecipe = $this->Recipes->first();
+
+        $grocerylists->first()->recipes()->save($firstRecipe);
 
         $this->visit('recipe')
             ->click($firstRecipe->title)
@@ -93,12 +96,16 @@ class RecipeControllerTest extends TestCase
 
     private function buildSampleRecipe()
     {
+        $grocerylists = factory(GroceryList::class)->create()->get();
+
         $this->user->recipes()->save(factory(Recipe::class)->make());
         $this->Recipes = factory(Recipe::class, 3)
             ->create(['user_id' => $this->user->id])
             ->each(function($recipe){
                 $recipe->items()->saveMany(factory(Item::class, 5)->make());
             });
+
+        $grocerylists->first()->recipes()->saveMany($this->Recipes);
 
     }
 }
