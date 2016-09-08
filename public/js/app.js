@@ -12076,15 +12076,13 @@ new _vue2.default({
 });
 
 },{"./views/grocerylists/all-grocery-lists.vue":6,"./views/recipe/add-recipe.vue":7,"./views/recipe/single-recipe.vue":8,"vue":4,"vue-resource":3}],6:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    created: function created() {
-        alert('you reached grocery lists');
-    }
+    created: function created() {}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
 if (module.hot) {(function () {  module.hot.accept()

@@ -56,6 +56,8 @@ class GroceryListTest extends TestCase
         $this->GroceryList->addRecipe($recipe);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+        $this->assertTrue($this->GroceryList->items->contains($recipe->items->first()));
+        $this->assertTrue($this->GroceryList->items->contains($recipe->items->last()));
     }
 
     /**
@@ -169,6 +171,11 @@ class GroceryListTest extends TestCase
 
     private function createRecipe()
     {
-        return factory(Recipe::class)->create();
+        $recipe = factory(Recipe::class)->create();
+        $item = factory(Item::class, 5)->create();
+
+        $recipe->items()->saveMany($item);
+
+        return $recipe;
     }
 }

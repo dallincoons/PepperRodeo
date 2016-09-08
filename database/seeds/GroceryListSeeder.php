@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\GroceryList;
-use App\User;
+use App\Item;
 
 class GroceryListSeeder extends Seeder
 {
@@ -17,10 +17,16 @@ class GroceryListSeeder extends Seeder
 
         foreach(range(1, 4) as $index){
 
-            GroceryList::create([
+            $grocerylist = GroceryList::create([
                 'user_id' => 1,
                 'title' => $faker->word
             ]);
+
+            foreach(range(1, 9) as $itemindex)
+            {
+                $item = factory(Item::class)->create();
+                $grocerylist->items()->save($item);
+            }
 
         }
     }

@@ -5,6 +5,7 @@ namespace App;
 use App\Traits\Itemable;
 use App\Traits\Copyable;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\ListBuilder;
 
 class GroceryList extends Model
 {
@@ -31,6 +32,8 @@ class GroceryList extends Model
 
     public function addRecipe($recipe)
     {
+        $items = ListBuilder::build($recipe->items);
+        $this->items()->saveMany($items);
         $this->recipes()->attach($recipe->id);
     }
     public function removeRecipe($recipe)
