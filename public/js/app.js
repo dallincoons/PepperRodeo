@@ -12139,7 +12139,9 @@ exports.default = {
     },
     methods: {
         addToGroceryList: function addToGroceryList(groceryListId) {
-            this.$http.put('/grocerylist/' + groceryListId, { 'recipe_id': this.recipeId }).then(function (response) {});
+            this.$http.put('/grocerylist/' + groceryListId, { 'recipe_id': this.recipeId }).then(function (response) {
+                console.log(response.data);
+            });
         }
     }
 };

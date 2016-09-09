@@ -32,7 +32,7 @@ class GroceryList extends Model
 
     public function addRecipe($recipe)
     {
-        $items = ListBuilder::build($recipe->items);
+        $items = ListBuilder::build(clone $recipe->items);
         $this->items()->saveMany($items);
         $this->recipes()->attach($recipe->id);
     }

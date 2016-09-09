@@ -63,14 +63,8 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        $user = \Auth::user();
-
-        $recipes = $user->recipes;
-
-        $recipeIds = $recipes->pluck('id');
-
-        $listsWithoutRecipe = \Auth::user()->groceryLists->filter(function($grocerylist, $key) use($recipeIds){
-            return($grocerylist->recipes()->whereIn('id', $recipeIds)->count() === 0);
+        $listsWithoutRecipe = \Auth::user()->groceryLists->filter(function($grocerylist, $key) use($recipe){
+            return($grocerylist->recipes()->where('id', $recipe->getKey())->count() === 0);
         });
 
         return view('recipes.single-recipe', compact('recipe', 'listsWithoutRecipe'));
