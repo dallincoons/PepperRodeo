@@ -58,39 +58,8 @@ class GroceryListTest extends TestCase
         $this->GroceryList->addRecipe($recipe);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
-        $this->assertEquals($recipe->items->first()->name, $this->GroceryList->items->first()->name);
-//        $this->assertEquals($recipe->items->last()->name, $this->GroceryList->items->last()->name);
-        $this->assertEquals($itemCount, $recipe->fresh()->items->count());
-    }
-
-    /**
-     * @group GroceryList
-     * @test
-     */
-    public function api_recipe_to_grocery_list_via_update_method()
-    {
-
-        $item = factory(Item::class)->create();
-
-        $recipe = factory(Recipe::class)->create();
-
-        $grocerylist = factory(GroceryList::class)->create();
-
-        $recipe->items()->save($item);
-        $grocerylist->items()->save($item);
-
-        $recipe = $this->createRecipe();
-
-        app()->handle(Request::create('/grocerylist' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]));
-        $recipe = $this->createRecipe();
-
-        $itemCount = $recipe->items->count();
-
-        $this->GroceryList->addRecipe($recipe);
-
-        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
-//        $this->assertEquals($recipe->items->first()->name, $grocerylist->items->first()->name);
-//        $this->assertEquals($recipe->items->last()->name, $grocerylist->items->last()->name);
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->first()->name));
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->last()->name));
         $this->assertEquals($itemCount, $recipe->fresh()->items->count());
     }
 
@@ -100,12 +69,17 @@ class GroceryListTest extends TestCase
      */
     public function adds_existing_recipe_to_grocery_list_through_http()
     {
-        $recipe = factory(Recipe::class)->create();
+        $recipe = $this->createRecipe();
+
+        $itemCount = $recipe->items->count();
 
         $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]);
         app()->handle($request);
 
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->first()->name));
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->last()->name));
+        $this->assertEquals($itemCount, $recipe->fresh()->items->count());
 
     }
 
@@ -115,11 +89,14 @@ class GroceryListTest extends TestCase
      */
     public function adds_new_recipe_to_grocery_list_through_http()
     {
+
         $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => 0, 'title' => 'Creamy Chicken and Broccoli', 'items' => [['quantity' => 2, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'name' => 'lbs of chicken']]]);
         app()->handle($request);
 
         $recipe = $this->GroceryList->recipes()->first();
         $this->assertEquals('Creamy Chicken and Broccoli', $recipe->title);
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->first()->name));
+        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->last()->name));
     }
 
     /**
