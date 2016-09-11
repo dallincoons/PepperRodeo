@@ -12,12 +12,12 @@ class Item extends Model
 
     public function recipe()
     {
-        return $this->belongsTo(Recipe::class);
+        return $this->morphedByMany(Recipe::class, 'itemable');
     }
 
     public function groceryList()
     {
-        return $this->belongsToMany(GroceryList::class);
+        return $this->belongsToMany(GroceryList::class, 'itemable');
     }
 
     public function itemable()

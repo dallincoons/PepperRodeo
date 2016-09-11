@@ -80,7 +80,7 @@ class GroceryListController extends Controller
     {
         $groceryListManager = new GroceryListManager($grocerylist);
 
-        return $groceryListManager->addRecipe($request->recipe_id);
+        return $groceryListManager->addRecipe($request->recipe_id, $request->title, $request->items);
     }
 
     /**

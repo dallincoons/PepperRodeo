@@ -60,41 +60,38 @@ class GroceryListTest extends TestCase
         $this->assertTrue($this->GroceryList->recipes->contains($recipe));
         $this->assertTrue($this->GroceryList->items->contains($recipe->items->first()));
         $this->assertTrue($this->GroceryList->items->contains($recipe->items->last()));
-        $this->assertEquals($itemCount, $recipe->items->count());
+        $this->assertEquals($itemCount, $recipe->fresh()->items->count());
     }
 
     /**
      * @group GroceryList
      * @test
      */
-    public function adds_recipe_to_grocery_list_via_update_method()
+    public function api_recipe_to_grocery_list_via_update_method()
     {
 
-          $item = factory(Item::class)->create();
+        $item = factory(Item::class)->create();
 
-          $recipe = factory(Recipe::class)->create();
+        $recipe = factory(Recipe::class)->create();
 
-          $grocerylist = factory(GroceryList::class)->create();
+        $grocerylist = factory(GroceryList::class)->create();
 
-          $recipe->items()->save($item);
-          $grocerylist->items()->save($item);
+        $recipe->items()->save($item);
+        $grocerylist->items()->save($item);
 
-          dd($recipe->items);
+        $recipe = $this->createRecipe();
 
+        app()->handle(Request::create('/grocerylist' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]));
+        $recipe = $this->createRecipe();
 
-//        $recipe = $this->createRecipe();
+        $itemCount = $recipe->items->count();
 
-//        app()->handle(Request::create('/grocerylist' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]));
-//        $recipe = $this->createRecipe();
-//
-//        $itemCount = $recipe->items->count();
-//
-//        $this->GroceryList->addRecipe($recipe);
-//
-//        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
-//        $this->assertTrue($this->GroceryList->items->contains($recipe->items->first()));
-//        $this->assertTrue($this->GroceryList->items->contains($recipe->items->last()));
-//        $this->assertEquals($itemCount, $recipe->items->count());
+        $this->GroceryList->addRecipe($recipe);
+
+        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
+        $this->assertTrue($this->GroceryList->items->contains($recipe->items->first()));
+        $this->assertTrue($this->GroceryList->items->contains($recipe->items->last()));
+        $this->assertEquals($itemCount, $recipe->fresh()->items->count());
     }
 
     /**

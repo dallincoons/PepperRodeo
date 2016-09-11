@@ -11,16 +11,16 @@ class GroceryListManager
         $this->groceryList = $grocerylist;
     }
 
-    public function addRecipe($recipe_id, $title = '')
+    public function addRecipe($recipe_id, $title = '', $items = [])
     {
         //@todo - check if recipe is already associated with grocery list?
-//        if($recipe_id === null || $recipe_id < 1)
-//        {
-//            $newRecipe = Recipe::create(['user_id' => \Auth::User()->getKey(), 'title' => $title]);
-//            $newRecipe->addItems($request->items);
-//            $this->groceryList->addRecipe($newRecipe);
-//            return;
-//        }
+        if($recipe_id === null || $recipe_id < 1)
+        {
+            $newRecipe = Recipe::create(['user_id' => \Auth::User()->getKey(), 'title' => $title]);
+            $newRecipe->addItems($items);
+            $this->groceryList->addRecipe($newRecipe);
+            return;
+        }
 
         $recipe = Recipe::findOrFail($recipe_id);
 

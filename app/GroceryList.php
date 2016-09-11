@@ -22,7 +22,7 @@ class GroceryList extends Model
 
     public function items()
     {
-        return $this->morphMany(Item::class, 'itemable');
+        return $this->morphToMany(Item::class, 'itemable');
     }
 
     public function recipes()
@@ -32,7 +32,7 @@ class GroceryList extends Model
 
     public function addRecipe($recipe)
     {
-        $items = ListBuilder::build(clone $recipe->items);
+        $items = ListBuilder::build($recipe->items);
         $this->items()->saveMany($items);
         $this->recipes()->attach($recipe->id);
     }
