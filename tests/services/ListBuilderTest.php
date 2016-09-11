@@ -33,9 +33,9 @@ class ListBuilderTest extends TestCase
         $itemCollection->add(factory(Item::class)->create(['name' => 'Pickles', 'quantity' => 3]));
         $itemCollection->add(factory(Item::class)->create(['name' => 'nuts', 'quantity' => 1]));
 
-        $items = $this->getSampleItemCollection($itemCollection);
+         $itemCollection = $this->getSampleItemCollection($itemCollection);
 
-        $list = ListBuilder::build($items);
+        $list = ListBuilder::build($itemCollection);
 
         $pickles = $list->filter(function($value, $key){
             return ($value->name == 'pickles');

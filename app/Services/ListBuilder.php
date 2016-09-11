@@ -17,24 +17,11 @@ class ListBuilder
         {
             $likeItems = static::findLikeItems($items, $item);
 
-            if(count($likeItems))
+            foreach(self::combineLikeItems($items, $likeItems) as $combinedItem)
             {
-                $newCollection->add($items->get($likeItems->first()->id));
-                $items->forget($likeItems->first()->id);
-                continue;
+                $newCollection->add($combinedItem);
             }
-
-            $newCollection->merge(self::combineMultipleLikeItems($items, $likeItems));
-
-            foreach(self::combineMultipleLikeItems($items, $likeItems) as $item2)
-            {
-                $newCollection->add($item2);
-            }
-
-            $newCollection->add($item);
-
         }
-
         return $newCollection;
     }
 
@@ -54,7 +41,7 @@ class ListBuilder
     private static function findLikeItems($items, $item)
     {
         $likeItems = $items->filter(function ($value, $key) use ($item) {
-            return $value->name === $item->name && $item->id !== $value->id;
+            return strtolower($value->name) === strtolower($item->name);
         });
         return $likeItems;
     }
@@ -66,7 +53,7 @@ class ListBuilder
      *
      * @return Collection
      */
-    private static function combineMultipleLikeItems($items, $likeItems)
+    private static function combineLikeItems($items, $likeItems)
     {
 
         $newCollection = new Collection();

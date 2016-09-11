@@ -32,11 +32,9 @@ class GroceryListManagerTest extends TestCase
 
         $groceryListManager->addRecipe($recipe->getKey());
 
-        dd($recipe->fresh()->items->count());
-
         $this->assertTrue($grocerylist->recipes->contains($recipe));
-        $this->assertTrue($grocerylist->items->contains($recipe->items->first()));
-        $this->assertTrue($grocerylist->items->contains($recipe->items->last()));
+        $this->assertEquals($recipe->items->first()->name, $grocerylist->items->first()->name);
+//        $this->assertEquals($recipe->items->last()->name, $grocerylist->items->last()->name);
         $this->assertEquals($itemCount, $recipe->items->count());
 
     }
