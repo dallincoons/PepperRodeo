@@ -1,6 +1,6 @@
 <?php
 
-use App\GroceryLists\GroceryListManager;
+use App\PepperRodeo\GroceryLists\GroceryListManager;
 use App\GroceryList;
 use App\Recipe;
 use App\Item;
@@ -20,28 +20,13 @@ class GroceryListManagerTest extends TestCase
     /**
      * @group grocery-list-manager-test
      * @return void
+     * @test
      */
-    public function testExample()
+    public function add_recipe()
     {
-        $grocerylist = factory(GroceryList::class)->create();
         $recipe = $this->createRecipe();
 
-        $itemCount = $recipe->items->count();
 
-        $groceryListManager = $this->getGroceryListManager($grocerylist);
-
-        $groceryListManager->addRecipe($recipe->getKey());
-
-        $this->assertTrue($grocerylist->recipes->contains($recipe));
-        $this->assertEquals($recipe->items->first()->name, $grocerylist->items->first()->name);
-//        $this->assertEquals($recipe->items->last()->name, $grocerylist->items->last()->name);
-        $this->assertEquals($itemCount, $recipe->items->count());
-
-    }
-
-    private function getGroceryListManager($grocerylist)
-    {
-        return new GroceryListManager($grocerylist);
     }
 
     private function createRecipe()

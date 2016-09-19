@@ -1,14 +1,16 @@
-<?php namespace App\GroceryLists;
+<?php namespace App\PepperRodeo\GroceryLists;
 
 use App\Recipe;
+use App\GroceryList;
 
 class GroceryListManager
 {
     protected $groceryList;
 
-    public function __construct($grocerylist)
+    public function __construct($groceryList, GroceryListBuilder $groceryListBuilder)
     {
-        $this->groceryList = $grocerylist;
+        $this->groceryList = $groceryList;
+        $this->groceryListBuilder = $groceryListBuilder;
     }
 
     public function addRecipe($recipe_id)

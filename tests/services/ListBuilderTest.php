@@ -3,19 +3,21 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Services\ListBuilder;
+use App\PepperRodeo\GroceryLists\GroceryListBuilder;
 use App\Item;
 use Illuminate\Database\Eloquent\Collection;
 
 class ListBuilderTest extends TestCase
 {
+    use DatabaseTransactions;
+
     protected $ListBuilder;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->ListBuilder = new ListBuilder();
+        $this->ListBuilder = new GroceryListBuilder();
     }
 
     /**
@@ -33,9 +35,9 @@ class ListBuilderTest extends TestCase
         $itemCollection->add(factory(Item::class)->create(['name' => 'Pickles', 'quantity' => 3]));
         $itemCollection->add(factory(Item::class)->create(['name' => 'nuts', 'quantity' => 1]));
 
-         $itemCollection = $this->getSampleItemCollection($itemCollection);
+//         $itemCollection = $this->getSampleItemCollection($itemCollection);
 
-        $list = ListBuilder::build($itemCollection);
+        $list = $this->ListBuilder->build($itemCollection);
 
         $pickles = $list->filter(function($value, $key){
             return ($value->name == 'pickles');
@@ -49,10 +51,10 @@ class ListBuilderTest extends TestCase
              return ($value->name == 'nuts');
          })->first();
 
-        $this->assertCount(1, $pickles);
-        $this->assertEquals(4, $pickles->first()->quantity);
-        $this->assertEquals(6, $tomatoes->quantity);
-        $this->assertEquals(1, $nuts->quantity);
+         $this->assertCount(1, $pickles);
+         $this->assertEquals(4, $pickles->first()->quantity);
+         $this->assertEquals(6, $tomatoes->quantity);
+         $this->assertEquals(1, $nuts->quantity);
      }
 
      private function getSampleItemCollection($itemCollection)

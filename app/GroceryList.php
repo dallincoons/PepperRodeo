@@ -5,7 +5,7 @@ namespace App;
 use App\Traits\Itemable;
 use App\Traits\Copyable;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\ListBuilder;
+use App\PepperRodeo\GroceryLists\GroceryListBuilder;
 
 class GroceryList extends Model
 {
@@ -32,7 +32,8 @@ class GroceryList extends Model
 
     public function addRecipe($recipe)
     {
-        $items = ListBuilder::build($recipe->items);
+        $listBuilder = \App::make(GroceryListBuilder::class);
+        $items = $listBuilder->build($recipe->items);
         $this->items()->saveMany($items);
         $this->recipes()->attach($recipe->id);
     }

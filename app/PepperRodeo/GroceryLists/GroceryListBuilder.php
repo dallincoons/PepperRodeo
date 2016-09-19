@@ -1,33 +1,36 @@
-<?php namespace App\Services;
+<?php namespace App\PepperRodeo\GroceryLists;
 
 use Illuminate\Database\Eloquent\Collection;
 use App\Item;
 
-class ListBuilder
+class GroceryListBuilder
 {
     protected $items;
 
-    public static function build($items)
+    public function build($items)
     {
+        $this->items = $items;
+
         $newCollection = new Collection();
-        $items = static::mapNameToLowerCase($items);
-        $items = $items->keyBy('id');
+        $this->mapNameToLowerCase();
+        $this->items = $this->items->keyBy('id');
 
-        foreach($items as $item)
+        foreach($this->items as $item)
         {
-            $likeItems = static::findLikeItems($items, $item);
+            $likeItems = $this->findLikeItems($item);
 
-            foreach(self::combineLikeItems($items, $likeItems) as $combinedItem)
+            foreach($this->combineLikeItems($likeItems) as $combinedItem)
             {
                 $newCollection->add($combinedItem);
             }
         }
+
         return $newCollection;
     }
 
-    protected static function mapNameToLowerCase($items)
+    protected function mapNameToLowerCase()
     {
-        return $items->map(function($item, $key){
+        return $this->items->map(function($item, $key){
             $item->name  = strtolower($item->name);
             return $item;
         });
@@ -38,10 +41,12 @@ class ListBuilder
      * @param $item
      * @return mixed
      */
-    private static function findLikeItems($items, $item)
+    protected function findLikeItems($item)
     {
+        $items = $this->items;
+
         $likeItems = $items->filter(function ($value, $key) use ($item) {
-            return strtolower($value->name) === strtolower($item->name);
+                return strtolower($value->name) === strtolower($item->name);
         });
         return $likeItems;
     }
@@ -53,9 +58,8 @@ class ListBuilder
      *
      * @return Collection
      */
-    private static function combineLikeItems($items, $likeItems)
+    protected function combineLikeItems($likeItems)
     {
-
         $newCollection = new Collection();
 
         if(is_object($likeItems->first())) {
@@ -63,7 +67,7 @@ class ListBuilder
         }
 
         foreach ($likeItems->pluck('id') as $id) {
-            $items->forget($id);
+            $this->items->forget($id);
         }
 
         return $newCollection;

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\GroceryList;
 use App\Recipe;
 use Illuminate\Http\Response;
-use App\GroceryLists\GroceryListManager;
+use App\PepperRodeo\GroceryLists\GroceryListManager;
+use App\PepperRodeo\GroceryLists\GroceryListBuilder;
 
 class GroceryListController extends Controller
 {
@@ -78,7 +79,7 @@ class GroceryListController extends Controller
      */
     public function update(Request $request, GroceryList $grocerylist)
     {
-        $groceryListManager = new GroceryListManager($grocerylist);
+        $groceryListManager = \App::make(GroceryListManager::class, [$grocerylist]);
 
         if(!$request->recipe_id){
             return $groceryListManager->addNewRecipe($request->title, $request->items);
