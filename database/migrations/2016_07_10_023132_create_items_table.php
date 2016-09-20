@@ -17,8 +17,6 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->float('quantity');
             $table->integer('isCheckedOff')->default(0);
-            $table->integer('itemable_id')->nullable();
-            $table->string('itemable_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

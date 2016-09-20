@@ -61,7 +61,6 @@ class GroceryListBuilder
     protected function combineLikeItems($likeItems)
     {
         $newCollection = new Collection();
-
         if(is_object($likeItems->first())) {
             $newCollection->add(new Item(['name' => $likeItems->first()->name, 'quantity' => $likeItems->sum('quantity')]));
         }

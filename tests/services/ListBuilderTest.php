@@ -5,6 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\PepperRodeo\GroceryLists\GroceryListBuilder;
 use App\Item;
+use App\Recipe;
 use Illuminate\Database\Eloquent\Collection;
 
 class ListBuilderTest extends TestCase
@@ -28,16 +29,16 @@ class ListBuilderTest extends TestCase
      */
      public function combines_items_with_the_same_name_from_collection_of_times()
      {
-        $itemCollection = new Collection;
-        $itemCollection->add(factory(Item::class)->create(['name' => 'tomato', 'quantity' => 4]));
-        $itemCollection->add(factory(Item::class)->create(['name' => 'Tomato', 'quantity' => 2]));
-        $itemCollection->add(factory(Item::class)->create(['name' => 'pickles', 'quantity' => 1]));
-        $itemCollection->add(factory(Item::class)->create(['name' => 'Pickles', 'quantity' => 3]));
-        $itemCollection->add(factory(Item::class)->create(['name' => 'nuts', 'quantity' => 1]));
+        $recipe = factory(Recipe::class)->create();
+        $recipe->items()->save(factory(Item::class)->create(['name' => 'tomato', 'quantity' => 4]));
+        $recipe->items()->save(factory(Item::class)->create(['name' => 'Tomato', 'quantity' => 2]));
+        $recipe->items()->save(factory(Item::class)->create(['name' => 'pickles', 'quantity' => 1]));
+        $recipe->items()->save(factory(Item::class)->create(['name' => 'Pickles', 'quantity' => 3]));
+        $recipe->items()->save(factory(Item::class)->create(['name' => 'nuts', 'quantity' => 1]));
 
-//         $itemCollection = $this->getSampleItemCollection($itemCollection);
+        $recipe->items()->saveMany($this->getSampleItemCollection());
 
-        $list = $this->ListBuilder->build($itemCollection);
+        $list = $this->ListBuilder->build($recipe->items);
 
         $pickles = $list->filter(function($value, $key){
             return ($value->name == 'pickles');
@@ -57,9 +58,9 @@ class ListBuilderTest extends TestCase
          $this->assertEquals(1, $nuts->quantity);
      }
 
-     private function getSampleItemCollection($itemCollection)
+     private function getSampleItemCollection()
      {
-        return factory(Item::class, 5)->create()->merge($itemCollection);
+        return factory(Item::class, 5)->create();
      }
 
 }
