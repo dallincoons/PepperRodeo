@@ -32,10 +32,12 @@ class GroceryList extends Model
 
     public function addRecipe($recipe)
     {
-        $listBuilder = \App::make(GroceryListBuilder::class);
-        $items = $listBuilder->build($recipe->items);
-        $this->items()->saveMany($items);
+//        $listBuilder = \App::make(GroceryListBuilder::class);
+//        $items = $listBuilder->build($recipe->items);
+//        $this->items()->saveMany($items);
+//        $this->recipes()->attach($recipe->id);
         $this->recipes()->attach($recipe->id);
+        $this->items()->saveMany($recipe->items);
     }
     public function removeRecipe($recipe)
     {
