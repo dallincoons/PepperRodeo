@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\PepperRodeo\GroceryLists\GroceryListBuilder;
+use App\PepperRodeo\GroceryLists\GroceryListPresenter;
 use App\Item;
 use App\Recipe;
 use Illuminate\Database\Eloquent\Collection;
@@ -18,7 +18,7 @@ class ListBuilderTest extends TestCase
     {
         parent::setUp();
 
-        $this->ListBuilder = new GroceryListBuilder();
+        $this->ListBuilder = new GroceryListPresenter();
     }
 
     /**

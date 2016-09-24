@@ -3,18 +3,17 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\PepperRodeo\GroceryLists\GroceryListBuilder;
+use App\PepperRodeo\GroceryLists\GroceryListPresenter;
 
-class GroceryListBuilderProvider extends ServiceProvider
+class GroceryListPresenterProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      *
      * @return void
      */
-    public function boot(GroceryListBuilder $test)
+    public function boot(GroceryListPresenter $test)
     {
-//        dd($this->app->GroceryListBuilder());
     }
 
     /**
@@ -24,8 +23,8 @@ class GroceryListBuilderProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('GroceryListBuilder', function(){
-            return new GroceryListBuilder;
+        $this->app->bind('GroceryListPresenter', function(){
+            return new GroceryListPresenter;
         });
     }
 }

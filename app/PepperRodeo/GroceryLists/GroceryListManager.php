@@ -7,10 +7,10 @@ class GroceryListManager
 {
     protected $groceryList;
 
-    public function __construct($groceryList, GroceryListBuilder $groceryListBuilder)
+    public function __construct($groceryList, GroceryListPresenter $groceryListPresenter)
     {
         $this->groceryList = $groceryList;
-        $this->groceryListBuilder = $groceryListBuilder;
+        $this->groceryListPresenter = $groceryListPresenter;
     }
 
     public function addRecipe($recipe_id)

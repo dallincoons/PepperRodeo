@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Collection;
 use App\Item;
 
-class GroceryListBuilder
+class GroceryListPresenter
 {
     protected $items;
 
