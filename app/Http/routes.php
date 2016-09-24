@@ -22,6 +22,7 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
     Route::resource('recipe', 'RecipeController');
 
+    Route::get('/grocerylist/{grocerylist}/add/{recipe}', 'GroceryListController@manage');
     Route::resource('grocerylist', 'GroceryListController');
 
 });

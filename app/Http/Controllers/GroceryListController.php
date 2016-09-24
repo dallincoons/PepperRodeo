@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use Illuminate\Http\Request;
 
 use App\GroceryList;
 use App\PepperRodeo\GroceryLists\GroceryListManager;
 use App\PepperRodeo\GroceryLists\GroceryListPresenter;
+use App\Recipe;
 
 class GroceryListController extends Controller
 {
@@ -25,13 +27,25 @@ class GroceryListController extends Controller
     }
 
     /**
+     * Show grocery list manager view
+     */
+    public function manage(Request $request, GroceryList $grocerylist, Recipe $recipe)
+    {
+        $recipes[] = $recipe;
+
+        return view('grocerylists.manage', compact('grocerylist', 'recipes'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $recipes = \Auth::user()->recipes;
+
+        return view('grocerylists.create-grocery-list', compact('recipes'));
     }
 
     /**
@@ -42,7 +56,13 @@ class GroceryListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($recipeIds = $request->input('recipeIds')){
+            $recipes = Recipe::findOrFail(array_keys($recipeIds));
+        }
+
+        $grocerylist = GroceryList::create(['user_id' => \Auth::user()->getKey(), 'title' => $request->title]);
+
+        return view('grocerylists.manage', compact('grocerylist', 'recipes'));
     }
 
     /**
@@ -53,7 +73,7 @@ class GroceryListController extends Controller
      */
     public function show(GroceryList $grocerylist, GroceryListPresenter $listBuilder)
     {
-        $grocerylist = $listBuilder->build($grocerylist->items);
+//        $grocerylist = $listBuilder->build($grocerylist->items);
 
         return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }
@@ -79,13 +99,15 @@ class GroceryListController extends Controller
      */
     public function update(Request $request, GroceryList $grocerylist)
     {
-        $groceryListManager = \App::make(GroceryListManager::class, [$grocerylist]);
-
-        if(!$request->recipe_id){
-            return $groceryListManager->addNewRecipe($request->title, $request->items);
+        if($itemIds = $request->input('items')){
+            $itemIds = array_keys($request->input('items'));
         }
 
-        return $groceryListManager->addRecipe($request->recipe_id);
+        $items = Item::find($itemIds);
+
+        $grocerylist->items()->saveMany($items);
+
+        return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }
 
     /**

@@ -32,6 +32,22 @@ class GroceryListTest extends TestCase
      * @group GroceryList
      * @test
      */
+    public function add_recipe_item_to_grocery_list()
+    {
+        $recipe = $this->createRecipe();
+
+        $item = $recipe->items()->first();
+
+        $this->GroceryList->items()->save($item);
+
+        $this->assertEquals($item->getKey(), $recipe->items()->first()->getKey());
+        $this->assertEquals($item->getKey(), $this->GroceryList->items()->first()->getKey());
+    }
+
+    /**
+     * @group GroceryList
+     * @test
+     */
     public function add_item_to_grocery_list_from_array()
     {
         $this->createItem();

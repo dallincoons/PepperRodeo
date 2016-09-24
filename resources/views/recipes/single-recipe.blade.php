@@ -10,7 +10,8 @@
     <h1>Add to Grocery List</h1>
     <ul>
     @foreach($listsWithoutRecipe as $grocerylist)
-        <li @click="addToGroceryList({{$grocerylist->getKey()}})">{{$grocerylist->title}}</li>
+        {{--<li @click="addToGroceryList({{$grocerylist->getKey()}})">{{$grocerylist->title}}</li>--}}
+        <li><a href="/grocerylist/{{$grocerylist->getKey()}}/add/{{$recipe->getKey()}}">{{$grocerylist->title}}</a></li>
     @endforeach
     </ul>
 
