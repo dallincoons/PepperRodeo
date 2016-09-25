@@ -27,9 +27,9 @@ class HomeController extends Controller
     {
         if(Auth::check()){
 
-            $recipes = Auth::user()->recipes()->latest()->take(2)->get();
+            $lists = Auth::user()->groceryLists()->latest()->take(2)->get();
 
-            return view('home.welcome', compact('recipes'));
+            return view('home.welcome', compact('lists'));
 
         }
 

@@ -51,7 +51,7 @@ class RecipeController extends Controller
 
         }
 
-        return redirect('/recipe');
+        return redirect('/recipe/' . $recipe->getKey());
 
     }
 
