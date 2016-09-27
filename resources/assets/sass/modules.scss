@@ -1,0 +1,81 @@
+.pr-button {
+  width:80%;
+  padding: 5%;
+  background: #ff4b2e;
+  border-radius: 10px;
+  border-bottom: #fc907e 3px solid;
+  border-top:none;
+  border-right:none;
+  border-left: none;
+  margin: 10% 0;
+  flex: 1 1 auto;
+}
+
+.divider {
+  width: 90%;
+  height: 2px;
+  background: #acacac;
+}
+
+.page-title {
+  color: #ff4b2e;
+  text-align: center;
+}
+
+
+//Home Styling
+.home {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.home-buttons, .home-lists {
+  flex: 1 1 auto;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
+}
+
+
+.home .pr-button a {
+  color: white;
+  font-size: 2.25em;
+  min-width: 100%;
+}
+
+.home-lists {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.home-lists h3 a {
+  color: #ff4b2e;
+}
+
+.home-lists i {
+  font-size: .8em;
+  color: #acacac;
+}
+
+.home-lists .pr-button {
+  text-align: center;
+  width: 65%;
+  margin: 5% auto;
+  color: white;
+  font-size: 2em;
+}
+
+//RECIPES
+
+//Add New Recipe
+

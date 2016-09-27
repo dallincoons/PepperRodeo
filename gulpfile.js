@@ -23,5 +23,5 @@ elixir.config.js.browserify.watchify = {
  */
 
 elixir(function(mix) {
-    mix.browserify('app.js');
+    mix.sass('app.scss');
 });
