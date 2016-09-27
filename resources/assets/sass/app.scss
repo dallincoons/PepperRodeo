@@ -1,2 +1,146 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//Globel Styles
 
+h1 {
+ font-size: 3.75em;
+}
+
+h2 {
+ font-size: 3em;
+}
+
+h3 {
+ font-size: 2.25em;
+}
+
+h4 {
+ font-size: 1.875em;
+}
+
+h5 {
+ font-size: 1.5em;
+}
+
+h6{
+ font-size: 1.125em;
+}
+
+
+.pr-button {
+ width:80%;
+ padding: 5%;
+ background: #ff4b2e;
+ border-radius: 10px;
+ border-bottom: #fc907e 3px solid;
+ border-top:none;
+ border-right:none;
+ border-left: none;
+ margin: 10% 0;
+ flex: 1 1 auto;
+}
+
+.divider {
+ width: 90%;
+ height: 2px;
+ background: #acacac;
+}
+
+//Brand Bar
+.brand {
+ background: #ff4b2e;
+ height: 20%;
+}
+
+
+.brand h2 {
+ font-family:'Reklame Script', cursive ;
+ color: #ffffff;
+ text-align: center;
+ margin: 0;
+ padding: 5px;
+
+}
+
+//Bottom Navigation Bar
+
+.pr-nav {
+ bottom: 0;
+ margin-bottom: 0;
+ position: absolute;
+ width: 100%;
+ border-top:#acacac 1px solid;
+}
+
+.pr-nav ul {
+ display: flex;
+}
+
+.pr-nav li {
+ list-style: none;
+ flex: 1 1 auto;
+ padding-top: 10px;
+
+}
+
+.pr-nav i {
+ font-size: 2.5em;
+ color: #acacac;
+}
+
+.pr-nav .active i{
+ color: #ff4b2e;
+}
+
+
+
+
+//Home Styling
+.home {
+ display: flex;
+ flex-direction: column;
+ min-width: 100%;
+ justify-content: center;
+ align-content: center;
+ align-items: center;
+}
+
+.home-buttons, .home-lists {
+ flex: 1 1 auto;
+}
+
+.home-buttons {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ min-width: 100%;
+}
+
+
+.home .pr-button a {
+ color: white;
+ font-size: 2.25em;
+ min-width: 100%;
+}
+
+.home-lists {
+ display: flex;
+ flex-direction: column;
+ width: 80%;
+ margin: 0 auto;
+}
+
+.home-lists h3 a {
+ color: #ff4b2e;
+}
+
+.home-lists i {
+ font-size: .8em;
+ color: #acacac;
+}
+
+.home-lists .pr-button {
+ text-align: center;
+ width: 65%;
+ margin: 5% auto;
+ color: white;
+ font-size: 2em;
+}

@@ -1,15 +1,15 @@
-process.env.DISABLE_NOTIFIER = false;
+// process.env.DISABLE_NOTIFIER = false;
 
 var elixir = require('laravel-elixir');
-
-require('laravel-elixir-vueify');
-
-elixir.config.js.browserify.watchify = {
-    enabled: true,
-    options: {
-        poll: true
-    }
-};
+//
+// require('laravel-elixir-vueify');
+//
+// elixir.config.js.browserify.watchify = {
+//     enabled: true,
+//     options: {
+//         poll: true
+//     }
+// };
 
 /*
  |--------------------------------------------------------------------------
@@ -23,5 +23,5 @@ elixir.config.js.browserify.watchify = {
  */
 
 elixir(function(mix) {
-    mix.browserify('app.js');
+    mix.sass('app.scss');
 });
