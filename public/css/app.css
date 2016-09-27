@@ -16,24 +16,6 @@ h5 {
 h6 {
   font-size: 1.125em; }
 
-.pr-button {
-  width: 80%;
-  padding: 5%;
-  background: #ff4b2e;
-  border-radius: 10px;
-  border-bottom: #fc907e 3px solid;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  margin: 10% 0;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto; }
-
-.divider {
-  width: 90%;
-  height: 2px;
-  background: #acacac; }
-
 .brand {
   background: #ff4b2e;
   height: 20%; }
@@ -68,6 +50,28 @@ h6 {
 
 .pr-nav .active i {
   color: #ff4b2e; }
+
+.pr-button {
+  width: 80%;
+  padding: 5%;
+  background: #ff4b2e;
+  border-radius: 10px;
+  border-bottom: #fc907e 3px solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  margin: 10% 0;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto; }
+
+.divider {
+  width: 90%;
+  height: 2px;
+  background: #acacac; }
+
+.page-title {
+  color: #ff4b2e;
+  text-align: center; }
 
 .home {
   display: -ms-flexbox;
