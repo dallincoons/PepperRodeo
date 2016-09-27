@@ -1,0 +1,41 @@
+.category-wrapper {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.category:last-of-type {
+  margin-bottom: 20%;
+}
+
+.category {
+  list-style: none;
+  padding: 0;
+
+}
+
+.category-title {
+  background: #ff4b2e;
+}
+
+.category h3 {
+  color: white;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+.recipes {
+  list-style: none;
+  font-size: 1.75em;
+  font-weight: lighter;
+  padding: 0;
+}
+
+.recipes li {
+  background: rgba(225,75,46,.10);
+  margin-bottom: 2px;
+}
+
+.recipes a {
+  color: #3f3f3f;
+  padding-left: 15px;
+}

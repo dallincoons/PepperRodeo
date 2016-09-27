@@ -1,0 +1,27 @@
+.mini-nav ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.mini-nav li {
+  border: #ff4b2e 2px solid;
+  border-radius: 100%;
+  flex: 1 1 auto;
+  margin: 5px;
+}
+
+.mini-nav a {
+  color: #ff4b2e;
+  display: flex;
+  justify-content: center;
+}
+
+.mini-nav i {
+  font-size: 2em;
+  text-align: center;
+  padding: 10px;
+}

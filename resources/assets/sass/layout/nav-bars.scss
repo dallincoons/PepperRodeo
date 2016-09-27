@@ -16,12 +16,19 @@
 
 //Footer Navigation
 
+.pr-content {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+}
+
 .pr-nav {
   bottom: 0;
   margin-bottom: 0;
   position: absolute;
   width: 100%;
   border-top:#acacac 1px solid;
+  background: #ffffff;
+  flex: 0 0 auto;
 }
 
 .pr-nav ul {
