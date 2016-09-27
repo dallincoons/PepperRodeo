@@ -21,3 +21,14 @@ h5 {
 h6{
   font-size: 1.125em;
 }
+
+html, body {
+  height:100%;
+  min-height:100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
