@@ -1,7 +1,6 @@
 .recipe-form {
   display: flex;
   flex-direction: column;
-  //flex-wrap: wrap;
   width: 85%;
   margin: 0 auto;
 }
@@ -34,6 +33,10 @@
   margin: 0 5px 2px 5px;
 }
 
+.ingredient-inputs {
+  display: flex;
+}
+
 .qty, .type, .ingredient {
   display: flex;
   flex-direction: column;
@@ -41,15 +44,15 @@
 }
 
 .qty {
-  width: 20%;
+  width: 10%;
 }
 
 .type {
-  width: 25%;
+  width: 15%;
 }
 
 .ingredient {
-  width: 55%;
+  width: 32%;
 }
 
 .sub-heading {

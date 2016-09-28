@@ -18,7 +18,7 @@
             <label class="form-heading">Ingredients*</label>
 
             <div class="ingredient-section">
-                <div v-for="item in recipeItems" track-by="$index">
+                <div v-for="item in recipeItems" track-by="$index" class="ingredient-inputs">
                     <div class="qty">
                         <label for="quantity" class="sub-heading">Qty</label>
                         <input type="text" id="quantity" name="recipeFields[@{{$index}}][quantity]" class="qty-input" placeholder="3" />
