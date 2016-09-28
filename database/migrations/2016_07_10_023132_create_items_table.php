@@ -15,7 +15,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->float('quantity');
+            $table->string('type')->nullable();
+            $table->float('quantity')->nullable();
             $table->integer('isCheckedOff')->default(0);
             $table->rememberToken();
             $table->timestamps();
