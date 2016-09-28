@@ -9,3 +9,4 @@ Homestead.json
 database.sqlite_testing
 
 tests/_output/*
+composer.lock

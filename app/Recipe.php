@@ -15,7 +15,7 @@ class Recipe extends Model
     public $timestamps = true;
     private $foreignKey = 'recipe_id';
 
-    protected $fillable = array('user_id', 'title');
+    protected $fillable = array('user_id', 'title', 'directions');
 
     public function user()
     {
