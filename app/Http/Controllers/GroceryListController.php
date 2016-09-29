@@ -6,8 +6,7 @@ use App\Item;
 use Illuminate\Http\Request;
 
 use App\GroceryList;
-use App\PepperRodeo\GroceryLists\GroceryListManager;
-use App\PepperRodeo\GroceryLists\GroceryListPresenter;
+use App\PepperRodeo\GroceryLists\GroceryListPresenterBuilder;
 use App\Recipe;
 
 class GroceryListController extends Controller
@@ -71,9 +70,9 @@ class GroceryListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GroceryList $grocerylist, GroceryListPresenter $listBuilder)
+    public function show(GroceryList $grocerylist, GroceryListPresenterBuilder $listBuilder)
     {
-//        $grocerylist = $listBuilder->build($grocerylist->items);
+        $grocerylist = $listBuilder->build($grocerylist);
 
         return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }
