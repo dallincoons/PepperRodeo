@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2 class="page-title">New Recipe</h2>
+    <h3 class="page-title">New Recipe</h3>
     <div class="recipe-form">
         {!! Form::open(array('url' => '/recipe')) !!}
             <div class="recipe-section">
@@ -32,6 +32,28 @@
                     <div class="ingredient">
                         <label for="ingredient" class="sub-heading">Ingredient</label>
                         <input type="text" id="ingredient" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="flour"/>
+                    </div>
+
+                    <div class="dept">
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Department <i class="fa fa-angle-down"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Baking</a>
+                                <a class="dropdown-item" href="#">Canned Goods</a>
+                                <a class="dropdown-item" href="#">Condiments</a>
+                                <a class="dropdown-item" href="#">Dairy</a>
+                                <a class="dropdown-item" href="#">Dry Goods</a>
+                                <a class="dropdown-item" href="#">Frozen</a>
+                                <a class="dropdown-item" href="#">Household Goods</a>
+                                <a class="dropdown-item" href="#">Meat</a>
+                                <a class="dropdown-item" href="#">Miscellaneous</a>
+                                <a class="dropdown-item" href="#">Produce</a>
+                                <a class="dropdown-item" href="#">Spices</a>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
