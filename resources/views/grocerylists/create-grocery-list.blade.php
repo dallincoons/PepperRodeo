@@ -14,8 +14,8 @@
             </div>
         @endforeach
 
-        <a><i class="fa fa-plus-circle"></i> Add an item</a>
-        <div class="item-section">
+        <a v-on:click="setAddAnItem(true)"><i class="fa fa-plus-circle"></i> Add an item</a>
+        <div class="item-section" v-if="addAnItem">
             <div class="items-inputs">
                 <div class="qty">
                     <label for="quantity" class="sub-heading">Qty</label>

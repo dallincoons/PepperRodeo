@@ -12108,12 +12108,16 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            showRecipes: false
+            showRecipes: false,
+            addAnItem: false
         };
     },
     methods: {
         setShowRecipes: function setShowRecipes($bool) {
             this.showRecipes = $bool;
+        },
+        setAddAnItem: function setAddAnItem($bool) {
+            this.addAnItem = $bool;
         }
     }
 };
