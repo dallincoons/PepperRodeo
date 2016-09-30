@@ -1,22 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.app', ['vue' => 'create-grocery-list'])
 
 @section('content')
-    <div class="create-list">
+    <div class="create-list" v-if="!showRecipes">
         <h2 class="page-title">Create List</h2>
         {{Form::open(['url' => '/grocerylist'])}}
         <label for="title" class="form-heading">Title*</label>
         <input name="title" class="form-heading" placeholder="September Grocery List"/>
-        <a><i class="fa fa-plus-circle"></i> Add a recipe</a>
-        <div class="recipes-added">
-            <p><a>X</a> | BLTs</p>
-            <p><a>X</a> | Southwest Casserole</p>
-        </div>
+        <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
-        {{--<ul>--}}
-        {{--@foreach($recipes as $recipe)--}}
-        {{--<li>{{$recipe->title}} <input type="checkbox" name="recipeIds[{{$recipe->getKey()}}]"></li>--}}
-        {{--@endforeach--}}
-        {{--</ul>--}}
+        @foreach($recipes as $recipe)
+            <div class="recipes-added">
+                <p><a>X</a> | {{$recipe->title}}</p>
+            </div>
+        @endforeach
 
         <a><i class="fa fa-plus-circle"></i> Add an item</a>
         <div class="item-section">
@@ -78,6 +74,16 @@
         </div>
         {{--{{Form::submit()}}--}}
         {{Form::close()}}
+    </div>
+    <div v-if="showRecipes">
+        <ul>
+            <button v-on:click="setShowRecipes(false)">Back</button>
+            @foreach($recipes as $recipe)
+                <li>{{$recipe->title}} <input type="checkbox" name="recipeIds[{{$recipe->getKey()}}]"></li>
+            @endforeach
+        </ul>
+
+
     </div>
 
 @endsection

@@ -12065,6 +12065,10 @@ var _addRecipe = require('./views/recipe/add-recipe.vue');
 
 var _addRecipe2 = _interopRequireDefault(_addRecipe);
 
+var _createGroceryList = require('./views/grocerylists/create-grocery-list.vue');
+
+var _createGroceryList2 = _interopRequireDefault(_createGroceryList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue2.default.use(require('vue-resource'));
@@ -12072,10 +12076,10 @@ _vue2.default.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#tok
 
 new _vue2.default({
     el: '#PepperRodeoApp',
-    components: { AllGroceryLists: _allGroceryLists2.default, SingleRecipe: _singleRecipe2.default, AddRecipe: _addRecipe2.default }
+    components: { AllGroceryLists: _allGroceryLists2.default, SingleRecipe: _singleRecipe2.default, AddRecipe: _addRecipe2.default, CreateGroceryList: _createGroceryList2.default }
 });
 
-},{"./views/grocerylists/all-grocery-lists.vue":6,"./views/recipe/add-recipe.vue":7,"./views/recipe/single-recipe.vue":8,"vue":4,"vue-resource":3}],6:[function(require,module,exports){
+},{"./views/grocerylists/all-grocery-lists.vue":6,"./views/grocerylists/create-grocery-list.vue":7,"./views/recipe/add-recipe.vue":8,"./views/recipe/single-recipe.vue":9,"vue":4,"vue-resource":3}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12096,6 +12100,35 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"vue":4,"vue-hot-reload-api":2}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    data: function data() {
+        return {
+            showRecipes: false
+        };
+    },
+    methods: {
+        setShowRecipes: function setShowRecipes($bool) {
+            this.showRecipes = $bool;
+        }
+    }
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-74c3bda6", module.exports)
+  } else {
+    hotAPI.update("_v-74c3bda6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":4,"vue-hot-reload-api":2}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -12125,7 +12158,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-19cfaf34", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":4,"vue-hot-reload-api":2}],8:[function(require,module,exports){
+},{"vue":4,"vue-hot-reload-api":2}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
