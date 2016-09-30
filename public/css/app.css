@@ -31,8 +31,8 @@ body {
   background: #ff4b2e;
   height: 20%; }
 
-.brand h2 {
-  font-family: 'Reklame Script', cursive;
+.brand h3 {
+  font-family: 'Leckerli One', cursive;
   color: #ffffff;
   text-align: center;
   margin: 0;
@@ -126,7 +126,7 @@ body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   color: white;
-  font-size: 1.5em; }
+  font-size: 1em; }
 
 .home {
   display: -ms-flexbox;
@@ -254,13 +254,35 @@ body {
   flex-direction: column; }
 
 .qty {
-  width: 10%; }
+  width: 5%; }
 
 .type {
-  width: 15%; }
+  width: 10%; }
 
 .ingredient {
-  width: 32%; }
+  width: 20%; }
+
+.dept {
+  width: 15%;
+  height: 34px;
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
+
+.dept button {
+  color: #ff4b2e;
+  width: 100px;
+  padding: 5px; }
+
+.dept .dropdown-menu {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.dept .dropdown-menu a {
+  color: #ff4b2e;
+  text-decoration: none;
+  padding: 3px 0 5px 3px; }
 
 .sub-heading {
   font-weight: lighter;
@@ -368,6 +390,9 @@ body {
 
 .create-list .save-button {
   margin-bottom: 15%; }
+
+.create-list .save-button .pr-button {
+  font-size: 2em; }
 
 .grocery-lists .mini-nav {
   color: #ff4b2e;

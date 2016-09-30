@@ -44,15 +44,38 @@
 }
 
 .qty {
-  width: 10%;
+  width: 5%;
 }
 
 .type {
-  width: 15%;
+  width: 10%;
 }
 
 .ingredient {
-  width: 32%;
+  width: 20%;
+}
+
+.dept {
+  width: 15%;
+  height: 34px;
+  align-self: flex-end;
+}
+
+.dept button {
+  color: #ff4b2e;
+  width: 100px;
+  padding: 5px;
+}
+
+.dept .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.dept .dropdown-menu a {
+  color: #ff4b2e;
+  text-decoration: none;
+  padding: 3px 0 5px 3px;
 }
 
 .sub-heading {

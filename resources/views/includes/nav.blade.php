@@ -2,7 +2,7 @@
 {{--Mobile Header--}}
 <nav class="brand">
     <div>
-        <h2>PepperRodeo</h2>
+        <h3>PepperRodeo</h3>
     </div>
 </nav>
 
