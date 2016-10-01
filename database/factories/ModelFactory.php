@@ -3,6 +3,7 @@
 use App\Item;
 use App\Recipe;
 use App\GroceryList;
+use App\ItemCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Item::class, function (Faker\Generator $faker) {
+$cnt = ItemCategory::count();
+if ($cnt == 0)
+    return;
+
+$randIndex = rand(0, $cnt-1);
+
+$factory->define(App\Item::class, function (Faker\Generator $faker) use($randIndex) {
     return [
         'quantity' => $faker->randomNumber(2),
         'name' => $faker->word,
         'isCheckedOff' => 0,
         'remember_token' => str_random(10),
+        'item_category_id' => ItemCategory::skip($randIndex)->take(1)->first()->getKey()
     ];
 });
 
