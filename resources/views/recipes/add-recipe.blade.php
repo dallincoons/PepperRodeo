@@ -1,7 +1,6 @@
 @extends('layouts.app', ['vue' => 'add-recipe'])
 
 @section('content')
-
     <h3 class="page-title">New Recipe</h3>
     <div class="recipe-form">
         {!! Form::open(array('url' => '/recipe')) !!}

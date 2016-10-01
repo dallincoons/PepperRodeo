@@ -45,11 +45,9 @@ class GroceryListController extends Controller
     {
         $recipes = \Auth::user()->recipes()->with('items')->get();
 
-        $itemCategories = ItemCategory::all();
-
         JavaScript::put(['recipes' => $recipes->keyBy('id')]);
 
-        return view('grocerylists.create-grocery-list', compact('recipes', 'itemCategories'));
+        return view('grocerylists.create-grocery-list', compact('recipes'));
     }
 
     /**

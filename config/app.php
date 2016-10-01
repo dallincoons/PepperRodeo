@@ -159,6 +159,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\GroceryListPresenterProvider::class,
+        App\Http\ViewComposers\ComposerServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class
 
     ],
