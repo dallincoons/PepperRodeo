@@ -42,9 +42,9 @@ class GroceryListController extends Controller
      */
     public function create()
     {
-        $recipes = \Auth::user()->recipes;
+        $recipes = \Auth::user()->recipes()->with('items')->get();
 
-        JavaScript::put(['recipes' => $recipes]);
+        JavaScript::put(['recipes' => $recipes->keyBy('id')]);
 
         return view('grocerylists.create-grocery-list', compact('recipes'));
     }

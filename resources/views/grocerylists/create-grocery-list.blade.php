@@ -9,7 +9,7 @@
         <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
         <div class="recipes-added">
-            <p v-for="recipe in recipes">
+            <p v-for="recipe in addedRecipes">
                 <a>X</a> | @{{recipe.title}}
             </p>
         </div>
@@ -35,6 +35,12 @@
         </div>
 
         <div class="category-wrapper">
+            <ul class="category">
+                <li class="category-title"><h3>General</h3></li>
+                <ul class="recipes list-items">
+                    <li v-for="item in items()"><span>@{{ item.quantity }}</span> <span>@{{ item.name }}</span></li>
+                </ul>
+            </ul>
             <ul class="category">
                 <li class="category-title"><h3>Dairy</h3></li>
                 <li>
@@ -77,10 +83,8 @@
     </div>
     <div v-if="showRecipes">
         <ul>
-            <button v-on:click="setShowRecipes(false)">Back</button>
-            @foreach($recipes as $recipe)
-                <li>{{$recipe->title}} <input type="checkbox" name="recipeIds[{{$recipe->getKey()}}]"></li>
-            @endforeach
+            <button v-on:click="addRecipes(recipesToAdd)">Save</button>
+            <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd"/><li>
         </ul>
     </div>
 
