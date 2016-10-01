@@ -25,7 +25,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
-  flex-direction: column; }
+  flex-direction: column;
+  font-family: Lato,sans-serif; }
 
 .brand {
   background: #ff4b2e;
@@ -272,12 +273,6 @@ body {
   color: #ff4b2e;
   width: 100px;
   padding: 5px; }
-
-.dept .dropdown-menu {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column; }
 
 .dept .dropdown-menu a {
   color: #ff4b2e;

@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="dept">
-                        <div class="dropdown open">
+                        <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Department <i class="fa fa-angle-down"></i>
                             </button>
