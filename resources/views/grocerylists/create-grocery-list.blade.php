@@ -8,11 +8,6 @@
         <input name="title" class="form-heading" placeholder="September Grocery List"/>
         <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
-            {{--<div class="recipes-added">--}}
-                    {{--<p>                @foreach($recipes as $recipe)--}}
-                            {{--<a>X</a> | {{$recipe->title}}</p>--}}
-            {{--</div>--}}
-
         <div class="recipes-added">
             <p><a>X</a> | BLTs</p>
             <p><a>X</a> | Southwest Casserole</p>
