@@ -38,7 +38,10 @@
             <ul class="category">
                 <li class="category-title"><h3>General</h3></li>
                 <ul class="recipes list-items">
-                    <li v-for="item in items()"><span>@{{ item.quantity }}</span> <span>@{{ item.name }}</span></li>
+                    <li v-for="item in items()">
+                        <span>@{{ item.quantity }}</span>
+                        <span>@{{ item.name }} </span>
+                    </li>
                 </ul>
             </ul>
             <ul class="category">
@@ -72,13 +75,16 @@
                 </li>
 
             </ul>
-
         </div>
+
+        {{--<div class="hidden-recipes">--}}
+            {{--<v-for="" input value="" name="recipesIds[]" />--}}
+        {{--</div>--}}
 
         <div class="save-button">
-            <button class="pr-button">Save List</button>
+            <button type="submit" class="pr-button">Save List</button>
         </div>
-        {{--{{Form::submit()}}--}}
+
         {{Form::close()}}
     </div>
     <div v-if="showRecipes">

@@ -1,5 +1,4 @@
 <script>
-    console.log(PepperRodeo.recipes);
     export default {
         data : function() {
             return {
