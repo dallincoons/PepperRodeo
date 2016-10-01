@@ -31,6 +31,19 @@
                     <label for="item" class="sub-heading">Item</label>
                     <input type="text" id="item" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="shampoo"/>
                 </div>
+
+                <div class="item-categories">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Department <i class="fa fa-angle-down"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach($itemCategories as $category)
+                                <a  class="dropdown-item">{{$category->name}}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

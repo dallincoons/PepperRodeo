@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ItemCategory;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Item;
@@ -31,7 +32,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.add-recipe');
+        $itemCategories = ItemCategory::all();
+
+        return view('recipes.add-recipe', compact('itemCategories'));
     }
 
     /**

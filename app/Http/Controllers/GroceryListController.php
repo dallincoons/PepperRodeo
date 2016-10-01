@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\ItemCategory;
 use Illuminate\Http\Request;
 use App\GroceryList;
 use App\PepperRodeo\GroceryLists\GroceryListPresenterBuilder;
@@ -44,9 +45,11 @@ class GroceryListController extends Controller
     {
         $recipes = \Auth::user()->recipes()->with('items')->get();
 
+        $itemCategories = ItemCategory::all();
+
         JavaScript::put(['recipes' => $recipes->keyBy('id')]);
 
-        return view('grocerylists.create-grocery-list', compact('recipes'));
+        return view('grocerylists.create-grocery-list', compact('recipes', 'itemCategories'));
     }
 
     /**
