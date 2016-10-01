@@ -29,7 +29,7 @@ class Recipe extends Model
 
     public function category()
     {
-        return $this->belongsTo(RecipeCategory::class);
+        return $this->belongsTo(RecipeCategory::class, 'recipe_category_id');
     }
 
     public function groceryLists()

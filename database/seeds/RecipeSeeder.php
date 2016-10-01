@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Recipe;
-use App\User;
 use App\Item;
+use App\RecipeCategory;
 
 class RecipeSeeder extends Seeder
 {
@@ -16,11 +16,19 @@ class RecipeSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        foreach(range(1, 8) as $index){
+        $cnt = RecipeCategory::count();
+        if ($cnt == 0)
+            return;
 
+
+
+        foreach(range(1, 8) as $index){
+            $randIndex = rand(0, $cnt-1);
+            
             $recipe = Recipe::create([
                 'user_id' => 1,
-                'title' => $faker->word
+                'title' => $faker->word,
+                'recipe_category_id' => RecipeCategory::skip($randIndex)->take(1)->first()->getKey()
             ]);
 
             foreach(range(1, 9) as $itemindex)

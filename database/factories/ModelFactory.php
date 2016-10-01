@@ -4,6 +4,7 @@ use App\Item;
 use App\Recipe;
 use App\GroceryList;
 use App\ItemCategory;
+use App\RecipeCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +42,16 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) use($randInd
     ];
 });
 
-$factory->define(App\Recipe::class, function (Faker\Generator $faker) {
+$cnt = RecipeCategory::count();
+if ($cnt == 0)
+    return;
+
+$randIndex = rand(0, $cnt-1);
+
+$factory->define(App\Recipe::class, function (Faker\Generator $faker){
     return [
         'title' => $faker->text(15),
-        'user_id' => App\User::all()->random()->id
+        'user_id' => App\User::all()->random()->id,
     ];
 });
 

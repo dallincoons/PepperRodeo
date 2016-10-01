@@ -18,8 +18,8 @@ class Recipes extends Migration
             $table->mediumText('directions')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('recipe_category');
+            $table->integer('recipe_category_id')->unsigned()->nullable();
+            $table->foreign('recipe_category_id')->references('id')->on('recipe_category');
             $table->timestamps();
         });
     }
