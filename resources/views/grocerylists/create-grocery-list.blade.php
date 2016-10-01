@@ -9,11 +9,9 @@
         <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
         <div class="recipes-added">
-            <p><a>X</a> | BLTs</p>
-            <p><a>X</a> | Southwest Casserole</p>
-            @foreach($recipes as $recipe)
-                <p><a>X</a> | {{$recipe->title}}</p>
-            @endforeach
+            <p v-for="recipe in recipes">
+                <a>X</a> | @{{recipe.title}}
+            </p>
         </div>
 
         <a v-on:click="setAddAnItem(true)"><i class="fa fa-plus-circle"></i> Add an item</a>

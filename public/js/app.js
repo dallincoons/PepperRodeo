@@ -12109,7 +12109,8 @@ exports.default = {
     data: function data() {
         return {
             showRecipes: false,
-            addAnItem: false
+            addAnItem: false,
+            recipes: PepperRodeo.recipes
         };
     },
     methods: {

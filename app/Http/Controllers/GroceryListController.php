@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use Illuminate\Http\Request;
-
 use App\GroceryList;
 use App\PepperRodeo\GroceryLists\GroceryListPresenterBuilder;
 use App\Recipe;
+use JavaScript;
 
 class GroceryListController extends Controller
 {
@@ -43,6 +43,8 @@ class GroceryListController extends Controller
     public function create()
     {
         $recipes = \Auth::user()->recipes;
+
+        JavaScript::put(['recipes' => $recipes]);
 
         return view('grocerylists.create-grocery-list', compact('recipes'));
     }

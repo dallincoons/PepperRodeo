@@ -3,7 +3,8 @@
         data : function() {
             return {
                 showRecipes : false,
-                addAnItem : false
+                addAnItem : false,
+                recipes : PepperRodeo.recipes
             }
         },
         methods : {
