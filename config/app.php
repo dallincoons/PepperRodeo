@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://smartstock.dev'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'MST',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +158,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\GroceryListPresenterProvider::class
+        App\Providers\GroceryListPresenterProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class
 
     ],
 
