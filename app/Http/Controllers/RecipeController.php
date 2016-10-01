@@ -32,9 +32,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $itemCategories = ItemCategory::all();
-
-        return view('recipes.add-recipe', compact('itemCategories'));
+        return view('recipes.add-recipe');
     }
 
     /**
