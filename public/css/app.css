@@ -275,6 +275,7 @@ body {
   padding: 5px; }
 
 .dept .dropdown-menu a {
+  display: block;
   color: #ff4b2e;
   text-decoration: none;
   padding: 3px 0 5px 3px; }

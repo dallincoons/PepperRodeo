@@ -67,13 +67,8 @@
   padding: 5px;
 }
 
-//breaks bootstrap dropdown functionality
-.dept .dropdown-menu {
-  //display: flex;
-  //flex-direction: column;
-}
-
 .dept .dropdown-menu a {
+  display: block;
   color: #ff4b2e;
   text-decoration: none;
   padding: 3px 0 5px 3px;
