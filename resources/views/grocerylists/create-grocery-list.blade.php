@@ -8,11 +8,18 @@
         <input name="title" class="form-heading" placeholder="September Grocery List"/>
         <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
-        @foreach($recipes as $recipe)
-            <div class="recipes-added">
+            {{--<div class="recipes-added">--}}
+                    {{--<p>                @foreach($recipes as $recipe)--}}
+                            {{--<a>X</a> | {{$recipe->title}}</p>--}}
+            {{--</div>--}}
+
+        <div class="recipes-added">
+            <p><a>X</a> | BLTs</p>
+            <p><a>X</a> | Southwest Casserole</p>
+            @foreach($recipes as $recipe)
                 <p><a>X</a> | {{$recipe->title}}</p>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
 
         <a v-on:click="setAddAnItem(true)"><i class="fa fa-plus-circle"></i> Add an item</a>
         <div class="item-section" v-if="addAnItem">
@@ -82,8 +89,6 @@
                 <li>{{$recipe->title}} <input type="checkbox" name="recipeIds[{{$recipe->getKey()}}]"></li>
             @endforeach
         </ul>
-
-
     </div>
 
 @endsection

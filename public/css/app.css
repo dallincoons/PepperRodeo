@@ -347,7 +347,9 @@ body {
 
 .recipes-added {
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
 
 .recipes-added p {
   background: #ff4b2e;
