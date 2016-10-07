@@ -28,6 +28,35 @@ body {
   flex-direction: column;
   font-family: Lato,sans-serif; }
 
+.pr-nav-lg {
+  display: none;
+  background: #ff4b2e; }
+
+.pr-nav-lg ul {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%; }
+
+.pr-nav-lg li {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto; }
+
+.pr-nav-lg a {
+  color: white;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 5px;
+  font-size: 2em;
+  -ms-flex-item-align: center;
+  align-self: center; }
+
+.pr-nav-lg h1 {
+  font-family: 'Leckerli One', cursive;
+  font-size: 1.5em; }
+
 .brand {
   background: #ff4b2e;
   height: 20%; }
@@ -70,6 +99,17 @@ body {
 
 .pr-nav .active i {
   color: #ff4b2e; }
+
+@media (min-width: 725px) {
+  .brand {
+    display: none; }
+  .pr-nav {
+    display: none; }
+  .pr-nav-lg {
+    display: -ms-flexbox;
+    display: flex; }
+  footer {
+    bottom: 0; } }
 
 .divider {
   width: 90%;
@@ -181,6 +221,18 @@ body {
   margin: 5% auto;
   color: white;
   font-size: 2em; }
+
+@media (min-width: 725px) {
+  .home {
+    width: 85%;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .home-buttons {
+    min-width: 50%; }
+  .home-lists {
+    width: 50%; }
+  .home-lists .pr-button {
+    width: 50%; } }
 
 .mini-nav ul {
   display: -ms-flexbox;

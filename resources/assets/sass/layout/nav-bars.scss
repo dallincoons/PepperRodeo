@@ -1,3 +1,34 @@
+//Large Nav
+ .pr-nav-lg {
+   display: none;
+   background: #ff4b2e;
+
+ }
+
+.pr-nav-lg ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+}
+
+.pr-nav-lg li {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.pr-nav-lg a {
+  color: white;
+  flex: 1 1 auto;
+  padding: 5px;
+  font-size: 2em;
+  align-self: center;
+}
+
+.pr-nav-lg h1 {
+  font-family: 'Leckerli One', cursive;
+  font-size: 1.5em;
+}
+
 //Brand Bar
 .brand {
   background: #ff4b2e;
@@ -49,4 +80,21 @@
 
 .pr-nav .active i{
   color: #ff4b2e;
+}
+
+
+@media  (min-width: 725px) {
+  .brand {
+    display: none;
+  }
+
+  .pr-nav {
+    display: none;
+  }
+
+  .pr-nav-lg {
+    display: flex;
+  }
+
+
 }
