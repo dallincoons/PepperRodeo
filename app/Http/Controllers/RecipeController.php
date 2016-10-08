@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ItemCategory;
-use App\RecipeCategory;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Item;
-
+use App\Http\Requests\CreateRecipeRequest;
 use App\Http\Requests;
 
 class RecipeController extends Controller
@@ -44,7 +42,7 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRecipeRequest $request)
     {
         $recipe = Recipe::create([
             'user_id' => \Auth::user()->getKey(),
