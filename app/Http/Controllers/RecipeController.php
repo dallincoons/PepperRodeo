@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ItemCategory;
+use App\RecipeCategory;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Item;
@@ -32,7 +33,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.add-recipe');
+        $categories = \Auth::user()->recipeCategories()->get();
+
+        return view('recipes.add-recipe', compact('categories'));
     }
 
     /**
@@ -43,7 +46,12 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = Recipe::create(['user_id' => \Auth::user()->getKey(), 'title' => $request->title, 'directions' => $request->directions]);
+        $recipe = Recipe::create([
+            'user_id' => \Auth::user()->getKey(),
+            'title' => $request->title,
+            'directions' => $request->directions,
+        ]);
+        $recipe->category()->associate($request->category);
         foreach($request->input('recipeFields') as $itemJson)
         {
             $item = Item::create($itemJson);

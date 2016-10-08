@@ -11,8 +11,14 @@
 
             <div class="recipe-section">
                 <label for="category" class="form-heading">Category*</label>
-                <input type="text" id="category" name="category" placeholder="Costco" />
+                <select id="category" name="category">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
+
+
 
             <label class="form-heading">Ingredients*</label>
 

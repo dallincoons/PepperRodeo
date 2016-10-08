@@ -16,19 +16,12 @@ class RecipeSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $cnt = RecipeCategory::count();
-        if ($cnt == 0)
-            return;
-
-
-
         foreach(range(1, 8) as $index){
-            $randIndex = rand(0, $cnt-1);
-            
+
             $recipe = Recipe::create([
                 'user_id' => 1,
                 'title' => $faker->word,
-                'recipe_category_id' => RecipeCategory::skip($randIndex)->take(1)->first()->getKey()
+                'recipe_category_id' => factory(RecipeCategory::class)->create(['user_id' => 1])->getKey()
             ]);
 
             foreach(range(1, 9) as $itemindex)
