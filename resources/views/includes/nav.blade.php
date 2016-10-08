@@ -1,3 +1,13 @@
+<nav class="pr-nav-lg">
+    <ul>
+        <li><a href="/"><h1>Pepper Rodeo</h1></a></li>
+        <li><a href="recipe"><i class="fa fa-cutlery"></i> Recipes</a></li>
+        <li><a href="grocerylist"><i class="fa fa-shopping-cart"></i> Lists</a></li>
+        <li><a><i class="fa fa-users"></i> Friends</a></li>
+        <li><a><i class="fa fa-user"></i> Account</a></li>
+    </ul>
+</nav>
+
 
 {{--Mobile Header--}}
 <nav class="brand">
@@ -19,3 +29,6 @@
         <li><a><i class="fa fa-user"></i></a></li>
     </ul>
 </nav>
+
+
+

@@ -48,3 +48,24 @@
   color: white;
   font-size: 2em;
 }
+
+
+@media  (min-width: 725px) {
+  .home {
+    width: 85%;
+    justify-content: center;
+  }
+
+  .home-buttons {
+    min-width: 50%;
+  }
+
+  .home-lists {
+    width: 50%;
+  }
+
+  .home-lists .pr-button {
+    width: 50%;
+  }
+
+}
