@@ -9,16 +9,19 @@
                 <input type="text" id="title" name="title" placeholder="September Grocery List"/>
             </div>
 
-            <div class="recipe-section">
+            <div class="recipe-section recipe-section--category">
                 <label for="category" class="form-heading">Category*</label>
-                <select id="category" name="category">
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
+                <div class="recipe-section__selection-group--category">
+                    <select class="recipe-section__selection--category" name="category" style="flex:1;">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                            <option>+ Add New Category</option>
+                    </select>
+                    <button type="button" v-on:click="addNewCategory()">Add New</button>
+                </div>
+                <input v-show="addingCategory">
             </div>
-
-
 
             <label class="form-heading">Ingredients*</label>
 

@@ -2,12 +2,16 @@
         data : function(){
             return {
                 recipeItemElement : '<input type="text">',
-                recipeItems : ['']
+                recipeItems : [''],
+                addingCategory : false
             }
         },
         methods : {
             addNewItem() {
                 this.recipeItems.push('');
+            },
+            addNewCategory() {
+                this.addingCategory = true;
             }
         }
     }
