@@ -27,9 +27,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $cnt = ItemCategory::count();
-if ($cnt == 0)
-    return;
-
 $randIndex = rand(0, $cnt-1);
 
 $factory->define(App\Item::class, function (Faker\Generator $faker) use($randIndex) {
@@ -42,11 +39,11 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) use($randInd
     ];
 });
 
-$cnt = RecipeCategory::count();
-if ($cnt == 0)
-    return;
-
-$randIndex = rand(0, $cnt-1);
+$factory->define(RecipeCategory::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->word
+    ];
+});
 
 $factory->define(App\Recipe::class, function (Faker\Generator $faker){
     return [
