@@ -11,9 +11,9 @@
 
             <div class="recipe-section">
                 <label for="category" class="form-heading">Category*</label>
-                <select id="category">
+                <select id="category" name="category">
                     @foreach($categories as $category)
-                        <option>{{$category->name}}</option>
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>

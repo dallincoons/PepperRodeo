@@ -46,7 +46,12 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = Recipe::create(['user_id' => \Auth::user()->getKey(), 'title' => $request->title, 'directions' => $request->directions]);
+        $recipe = Recipe::create([
+            'user_id' => \Auth::user()->getKey(),
+            'title' => $request->title,
+            'directions' => $request->directions,
+        ]);
+        $recipe->category()->associate($request->category);
         foreach($request->input('recipeFields') as $itemJson)
         {
             $item = Item::create($itemJson);
