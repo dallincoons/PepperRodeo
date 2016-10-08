@@ -32,12 +32,3 @@
 
 
 
-{{--<footer class="pr-nav-lg">--}}
-    {{--<ul>--}}
-        {{--<li><a href="/"><h1>Pepper Rodeo</h1></a></li>--}}
-        {{--<li>PO Box 1234 Phoenix, AZ 85016</li>--}}
-        {{--<li>(800) 555-5555</li>--}}
-        {{--<li>contact@pepperrodeo.com</li>--}}
-        {{--<li>Copyright © Pepper Rodeo 2016</li>--}}
-    {{--</ul>--}}
-{{--</footer>--}}
