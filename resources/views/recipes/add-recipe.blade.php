@@ -1,4 +1,4 @@
-@extends('layouts.app', ['vue' => 'add-recipe'])
+@extends('layouts.app', ['vue' => 'create-recipe'])
 
 @section('content')
     <h3 class="page-title">New Recipe</h3>
@@ -9,7 +9,7 @@
                 <input type="text" id="title" name="title" placeholder="September Grocery List"/>
             </div>
 
-            <div class="recipe-section recipe-section--category">
+            <div class="recipe-section">
                 <label for="category" class="form-heading">Category*</label>
                 <div class="recipe-section__selection-group--category">
                     <select v-model="selectedCategory" class="recipe-section__selection--category" name="category" style="flex:1;">
