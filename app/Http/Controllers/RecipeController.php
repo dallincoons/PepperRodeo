@@ -22,7 +22,7 @@ class RecipeController extends Controller
 
         foreach(Recipe::where('user_id', \Auth::user()->getKey())->with('category')->get() as $recipe)
         {
-            $key = $recipe->category()->first()->name;
+            $key = $recipe->category->name;
             if(!isset($recipes[$key])){
                 $recipes[$key] = [];
             }
