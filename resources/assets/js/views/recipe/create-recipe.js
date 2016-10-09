@@ -3,7 +3,10 @@
             return {
                 recipeItemElement : '<input type="text">',
                 recipeItems : [''],
-                addingCategory : false
+                addingCategory : false,
+                categories : PepperRodeo.categories,
+                selectedCategory : PepperRodeo.categories[0].id,
+                newCategory : '',
             }
         },
         methods : {
@@ -11,7 +14,9 @@
                 this.recipeItems.push('');
             },
             addNewCategory() {
-                this.addingCategory = true;
+                this.categories.push({'name' : this.newCategory, 'id' : -1});
+                this.selectedCategory = -1;
+                this.addingCategory = false;
             }
         }
     }

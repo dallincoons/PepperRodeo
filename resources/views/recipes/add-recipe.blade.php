@@ -12,15 +12,16 @@
             <div class="recipe-section recipe-section--category">
                 <label for="category" class="form-heading">Category*</label>
                 <div class="recipe-section__selection-group--category">
-                    <select class="recipe-section__selection--category" name="category" style="flex:1;">
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                            <option>+ Add New Category</option>
+                    <select v-model="selectedCategory" class="recipe-section__selection--category" name="category" style="flex:1;">
+                            <option v-for="category in categories" value="@{{category.id}}">@{{category.name}}</option>
                     </select>
-                    <button type="button" v-on:click="addNewCategory()">Add New</button>
+                    <button type="button" v-show="!addingCategory" v-on:click="this.addingCategory = true">Add New</button>
                 </div>
-                <input v-show="addingCategory">
+                <div v-show="addingCategory">
+                    <input v-model="newCategory" />
+                    <button v-on:click="addNewCategory()" type="button">Add</button>
+                    <button v-on:click="this.addingCategory = false" type="button">Cancel</button>
+                </div>
             </div>
 
             <label class="form-heading">Ingredients*</label>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Recipe;
 use App\Item;
 use App\Http\Requests\CreateRecipeRequest;
+use JavaScript;
 use App\Http\Requests;
 
 class RecipeController extends Controller
@@ -32,6 +33,8 @@ class RecipeController extends Controller
     public function create()
     {
         $categories = \Auth::user()->recipeCategories()->get();
+
+        Javascript::put(['categories' => $categories->toArray()]);
 
         return view('recipes.add-recipe', compact('categories'));
     }
