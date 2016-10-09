@@ -61,6 +61,16 @@
                 <textarea name="directions" placeholder="Preheat oven to 350°"></textarea>
             </div>
 
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="save-button">
                 <button class="pr-button">Save</button>
             </div>
