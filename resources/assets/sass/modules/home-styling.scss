@@ -57,7 +57,12 @@
   }
 
   .home-buttons {
-    min-width: 50%;
+    min-width: 100%;
+
+  }
+
+  .home-buttons .pr-button {
+    margin: 8%;
   }
 
   .home-lists {

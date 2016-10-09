@@ -96,6 +96,13 @@
     display: flex;
   }
 
+  .pr-content {
+    flex: 1;
+  }
+
+  footer {
+    height: 100px;
+  }
   footer .pr-nav-lg {
     width: 100%;
     }
@@ -111,6 +118,10 @@
   .footer-info {
     color: #FFFFFF;
     align-self: center;
+  }
+
+  .footer-info i {
+    padding: 1%;
   }
 
 }

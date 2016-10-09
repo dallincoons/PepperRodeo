@@ -6,10 +6,10 @@
         <h2 class="page-title">My Lists</h2>
         <nav class="mini-nav">
             <ul>
-                <li><i class="fa fa-plus"></i></li>
-                <li><i class="fa fa-pencil"></i></li>
-                <li><i class="fa fa-users"></i></li>
-                <li><i class="fa fa-trash"></i></li>
+                <li><a><i class="fa fa-plus"></i></a></li>
+                <li><a><i class="fa fa-pencil"></i></a></li>
+                <li><a><i class="fa fa-users"></i></a></li>
+                <li><a><i class="fa fa-trash"></i></a></li>
             </ul>
         </nav>
 
