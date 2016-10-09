@@ -11,6 +11,13 @@
   margin-bottom: 15px;
 }
 
+.recipe-section__selection-group--category{
+  display: flex;
+}
+.recipe-section__selection--category {
+  flex: 1;
+}
+
 .recipe-form input, textarea {
   border: 1px #acacac solid;
   border-radius: 5px;
@@ -20,7 +27,6 @@
   font-weight: lighter;
   padding-left: 3px;
 }
-
 
 .ingredient-section {
   display: flex;

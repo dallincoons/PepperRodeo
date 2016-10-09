@@ -9,4 +9,5 @@ Homestead.json
 database.sqlite_testing
 tests/_output/*
 public/css
+public/js
 
