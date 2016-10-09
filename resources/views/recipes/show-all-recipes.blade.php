@@ -12,47 +12,18 @@
                  <li><a><i class="fa fa-trash"></i></a></li>
              </ul>
         </nav>
-
-
         <div class="category-wrapper">
             <ul class="category">
-                <li class="category-title"><h3>Category Title</h3></li>
+                @foreach($recipes as $key => $recipe)
+                <li class="category-title"><h3>{{$key}}</h3></li>
                 <li>
                     <ul class="recipes">
-                        @foreach($recipes as $recipe)
-                            <li><a href="recipe/{{$recipe->id}}">{{$recipe->title}}</a></li>
+                        @foreach($recipe as $recipe2)
+                            <li><a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a></li>
                         @endforeach
                     </ul>
                 </li>
+                @endforeach
             </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Category Title</h3></li>
-                <li>
-                    <ul class="recipes">
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                    </ul>
-                </li>
-
-            </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Category Title</h3></li>
-                <li>
-                    <ul class="recipes">
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                        <li>Placeholder recipe</li>
-                    </ul>
-                </li>
-
-            </ul>
-
         </div>
 @endsection

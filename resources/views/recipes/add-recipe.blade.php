@@ -44,16 +44,16 @@
                     </div>
 
                     <div class="dept">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Department <i class="fa fa-angle-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {{--<div class="dropdown">--}}
+                            {{--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                                {{--Department <i class="fa fa-angle-down"></i>--}}
+                            {{--</button>--}}
+                            <select name="recipeFields[@{{$index}}][item_category_id]">
                                 @foreach($itemCategories as $category)
-                                    <a  class="dropdown-item">{{$category->name}}</a>
+                                    <option value="{{$category->id}}"  class="dropdown-item">{{$category->name}}</option>
                                 @endforeach
-                            </div>
-                        </div>
+                            </select>
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>

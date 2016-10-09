@@ -18,9 +18,16 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $user = \Auth::user();
+        $recipes = [];
 
-        $recipes = $user->recipes;
+        foreach(Recipe::where('user_id', \Auth::user()->getKey())->with('category')->get() as $recipe)
+        {
+            $key = $recipe->category()->first()->name;
+            if(!isset($recipes[$key])){
+                $recipes[$key] = [];
+            }
+            array_push($recipes[$key], $recipe);
+        }
 
         return view('recipes.show-all-recipes', compact('recipes'));
     }
@@ -60,6 +67,8 @@ class RecipeController extends Controller
             $recipe->items()->save($item);
 
         }
+
+        $recipe->save();
 
         return redirect('/recipe/' . $recipe->getKey());
 

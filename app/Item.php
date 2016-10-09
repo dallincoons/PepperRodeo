@@ -8,7 +8,7 @@ use App\GroceryList;
 
 class Item extends Model
 {
-    protected $fillable = array('quantity', 'name', 'recipe_id', 'grocery_list_id');
+    protected $fillable = array('quantity', 'name', 'recipe_id', 'grocery_list_id', 'item_category_id');
 
     public function recipe()
     {
