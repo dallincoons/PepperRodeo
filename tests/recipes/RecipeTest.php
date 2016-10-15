@@ -53,21 +53,10 @@ class RecipeTest extends TestCase
 
         $this->MainRecipe->addItem([
             'quantity' => 2,
-            'name' => 'Ketchup'
+            'name' => 'Ketchup',
+            'item_category_id' => \App\ItemCategory::first()->getKey()
         ]);
 
         $this->assertEquals(count($this->MainRecipe->items()->get()), ($itemCount + 1));
     }
-
-    /**
-     * @group RecipeTest
-     * @test
-     */
-     public function assign_recipe_a_category()
-     {
-        $recipeCategory = RecipeCategory::find(3);
-        $this->MainRecipe->assignCategory($recipeCategory->id);
-
-        $this->assertEquals($recipeCategory->id, $this->MainRecipe->category->id);
-     }
 }

@@ -55,7 +55,8 @@ class GroceryListTest extends TestCase
 
         $this->GroceryList->addItem([
             'quantity' => 2,
-            'name' => 'Ketchup'
+            'name' => 'Ketchup',
+            'item_category_id' => \App\ItemCategory::first()->getKey()
         ]);
 
         $this->assertEquals($this->getItemCount(), ($itemCount + 1));
@@ -86,33 +87,13 @@ class GroceryListTest extends TestCase
     public function adds_existing_recipe_to_grocery_list_through_http()
     {
         $recipe = $this->createRecipe();
+        $items = $recipe->items->keyBy('id');
 
-        $itemCount = $recipe->items->count();
-
-        $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => $recipe->getKey()]);
+        $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['items' => $items->toArray()]);
         app()->handle($request);
 
-        $this->assertTrue($this->GroceryList->recipes->contains($recipe));
-        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->first()->name));
-        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->last()->name));
-        $this->assertEquals($itemCount, $recipe->fresh()->items->count());
+        $this->assertEquals(array_keys($items->toArray()), array_keys($this->GroceryList->items->keyBy('id')->toArray()));
 
-    }
-
-    /**
-     * @group GroceryList
-     * @test
-     */
-    public function adds_new_recipe_to_grocery_list_through_http()
-    {
-
-        $request = Request::create('/grocerylist/' . $this->GroceryList->getKey(), 'PUT', ['recipe_id' => 0, 'title' => 'Creamy Chicken and Broccoli', 'items' => [['quantity' => 2, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'name' => 'lbs of chicken']]]);
-        app()->handle($request);
-
-        $recipe = $this->GroceryList->recipes()->first();
-        $this->assertEquals('Creamy Chicken and Broccoli', $recipe->title);
-        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->first()->name));
-        $this->assertTrue(collect($recipe->fresh()->items->pluck('name'))->contains($this->GroceryList->items->last()->name));
     }
 
     /**

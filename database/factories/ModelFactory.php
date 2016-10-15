@@ -49,6 +49,7 @@ $factory->define(App\Recipe::class, function (Faker\Generator $faker){
     return [
         'title' => $faker->text(15),
         'user_id' => App\User::all()->random()->id,
+        'recipe_category_id' => RecipeCategory::first()->getKey()
     ];
 });
 

@@ -39,10 +39,10 @@ class UserHome extends TestCase
         $this->User->recipes()->save($exampleRecipe2);
         $this->User->recipes()->save($exampleRecipe3);
 
-        $this->visit('/')
+        $this->visit('/recipe')
             ->see($exampleRecipe->title)
             ->see($exampleRecipe2->title)
-            ->dontSee($exampleRecipe3->title);
+            ->see($exampleRecipe3->title);
     }
 
     /**
@@ -58,7 +58,7 @@ class UserHome extends TestCase
         $this->User->recipes()->save($exampleRecipe);
         $this->User->recipes()->save($exampleRecipe2);
 
-        $this->visit('/')
+        $this->visit('/recipe')
              ->click($exampleRecipe->title)
              ->seePageIs('/recipe/' . $exampleRecipe->id);
     }
@@ -83,7 +83,7 @@ class UserHome extends TestCase
     public function click_add_grocerylist_link()
     {
         $this->visit('/')
-             ->click('Create a Grocery List')
+             ->click('Create a List')
              ->seePageIs('/grocerylist/create');
     }
 
