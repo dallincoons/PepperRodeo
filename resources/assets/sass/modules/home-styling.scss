@@ -19,7 +19,7 @@
 }
 
 
-.home .pr-button a {
+.pr-button > a {
   color: white;
   font-size: 2.25em;
   min-width: 100%;
@@ -61,15 +61,16 @@
 
   }
 
-  .home-buttons .pr-button {
+  .pr-button--home {
     margin: 8%;
   }
+
 
   .home-lists {
     width: 50%;
   }
 
-  .home-lists .pr-button {
+  .pr-button--home-lists {
     width: 50%;
   }
 

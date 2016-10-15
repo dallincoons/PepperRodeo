@@ -1,10 +1,10 @@
 
 <div class="home">
     <div class="home-buttons">
-        <button type="button" class="pr-button">
+        <button type="button" class="pr-button pr-button--home">
             <a href="/recipe/create">+ <i class="fa fa-cutlery"></i> Add a recipe</a>
         </button>
-        <button type="button" class="pr-button">
+        <button type="button" class="pr-button pr-button--home">
             <a href="/grocerylist/create">+ <i class="fa fa-shopping-cart"></i> Create a list</a>
         </button>
     </div>
@@ -18,6 +18,6 @@
         <h3><i class="fa fa-list"></i> <a href="grocerylist/{{$list->getKey()}}">{{$list->title}}</a></h3>
     @endforeach
 
-    <button type="button" class="pr-button">All Lists</button>
+    <button type="button" class="pr-button pr-button--home-lists">All Lists</button>
 </div>
 
