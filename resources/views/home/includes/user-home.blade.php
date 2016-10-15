@@ -18,6 +18,6 @@
         <h3><i class="fa fa-list"></i> <a href="grocerylist/{{$list->getKey()}}">{{$list->title}}</a></h3>
     @endforeach
 
-    <button type="button" class="pr-button pr-button--home-lists">All Lists</button>
+    <a href="/grocerylist" class="pr-button pr-button--home-lists">All Lists</a>
 </div>
 
