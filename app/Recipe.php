@@ -36,11 +36,4 @@ class Recipe extends Model
     {
         return $this->belongsToMany(GroceryList::class);
     }
-
-    public function assignCategory($category_id)
-    {
-        $this->category_id = $category_id;
-
-        $this->save();
-    }
 }

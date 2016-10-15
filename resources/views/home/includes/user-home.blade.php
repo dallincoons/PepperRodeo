@@ -2,10 +2,10 @@
 <div class="home">
     <div class="home-buttons">
         <button type="button" class="pr-button pr-button--home">
-            <a href="/recipe/create">+ <i class="fa fa-cutlery"></i> Add a recipe</a>
+            <a href="/recipe/create">+ <i class="fa fa-cutlery"></i> Add a Recipe</a>
         </button>
         <button type="button" class="pr-button pr-button--home">
-            <a href="/grocerylist/create">+ <i class="fa fa-shopping-cart"></i> Create a list</a>
+            <a href="/grocerylist/create">+ <i class="fa fa-shopping-cart"></i> Create a List</a>
         </button>
     </div>
 

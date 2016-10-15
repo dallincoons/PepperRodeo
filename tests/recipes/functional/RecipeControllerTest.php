@@ -78,13 +78,13 @@ class RecipeControllerTest extends TestCase
     public function submit_form_to_create_a_new_recipe()
     {
         $recipeTitle = 'Creamy Chicken and Rice';
-        $recipeItems = [['quantity' => 2, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'name' => 'lbs of chicken']];
+        $recipeItems = [['quantity' => 2, 'item_category_id' => 1, 'name' => 'lbs of ground beef'], ['quantity' => 4, 'item_category_id' => 1, 'name' => 'lbs of chicken']];
 
         $this->visit('recipe/create');
 
         //@todo create dynamic form
 
-        $this->json('POST', 'recipe', ['title' => $recipeTitle, 'recipeFields' => $recipeItems]);
+        $this->json('POST', 'recipe', ['title' => $recipeTitle, 'recipeFields' => $recipeItems, 'directions' => 'do it right', 'category' => 1]);
 
         $recipe = $this->user->recipes()->first();
         $actualRecipeItems = $recipe->items()->get();
