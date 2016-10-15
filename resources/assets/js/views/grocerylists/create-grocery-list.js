@@ -6,7 +6,8 @@
                 recipes : PepperRodeo.recipes,
                 unaddedRecipes : Object.assign({}, PepperRodeo.recipes),
                 addedRecipes : [],
-                recipesToAdd : []
+                recipesToAdd : [],
+                title : ''
             }
         },
         methods : {

@@ -59,7 +59,7 @@ class GroceryListController extends Controller
     public function store(Request $request)
     {
         if($recipeIds = $request->input('recipeIds')){
-            $recipes = Recipe::findOrFail(array_keys($recipeIds));
+            $recipes = Recipe::findOrFail($recipeIds);
         }
 
         $grocerylist = GroceryList::create(['user_id' => \Auth::user()->getKey(), 'title' => $request->title]);
