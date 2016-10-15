@@ -21,7 +21,7 @@ class ItemCategorySeeder extends Seeder
             'Household Goods',
             'Meat',
             'Miscellaneous',
-            'Product',
+            'Produce',
             'Spices'
         ];
 
