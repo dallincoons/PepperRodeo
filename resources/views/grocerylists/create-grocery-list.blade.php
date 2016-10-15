@@ -11,6 +11,7 @@
         <div class="recipes-added">
             <p v-for="recipe in addedRecipes">
                 <a>X</a> | @{{recipe.title}}
+                <input type="hidden" name="recipeIds[]" value="@{{ recipe.id }}">
             </p>
         </div>
 
