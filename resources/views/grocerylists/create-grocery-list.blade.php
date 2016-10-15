@@ -5,7 +5,7 @@
         <h2 class="page-title">Create List</h2>
         {{Form::open(['url' => '/grocerylist'])}}
         <label for="title" class="form-heading">Title*</label>
-        <input name="title" class="form-heading" placeholder="September Grocery List"/>
+        <input name="title" class="form-heading" placeholder="September Grocery List" v-model="title"/>
         <a v-on:click="setShowRecipes(true)"><i class="fa fa-plus-circle"></i> Add a recipe</a>
 
         <div class="recipes-added">
