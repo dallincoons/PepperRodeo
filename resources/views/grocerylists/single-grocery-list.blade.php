@@ -8,7 +8,6 @@
         <nav class="mini-nav">
             <ul class="list-nav">
                 <li><a><i class="fa fa-pencil"></i></a></li>
-                <li><a><i class="fa fa-users"></i></a></li>
                 <li><a><i class="fa fa-trash"></i></a></li>
             </ul>
         </nav>
