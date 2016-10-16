@@ -5,15 +5,13 @@
 
     {{Form::open(['url' => '/grocerylist/' . $grocerylist->getKey(), 'method' => 'patch'])}}
     <ul>
-    @foreach($recipes as $recipe)
-        @foreach($recipe->items as $item)
+        @foreach($items as $item)
             <li>
                 <input value="{{$item->quantity}}" />
                 <input value="{{$item->name}}"  />
                 <input type="checkbox" name="items[{{$item->getKey()}}]" value="{{$item}}" />
             </li>
         @endforeach
-    @endforeach
     </ul>
     {{Form::submit()}}
     {{Form::close()}}
