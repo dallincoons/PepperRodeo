@@ -20,30 +20,23 @@
             <div class="items-inputs">
                 <div class="qty">
                     <label for="quantity" class="sub-heading">Qty</label>
-                    <input type="text" id="quantity" name="recipeFields[@{{$index}}][quantity]" class="qty-input" placeholder="1" />
-                </div>
-
-                <div class="type">
-                    <label for="type" class="sub-heading">Type</label>
-                    <input type="text" id="type" name="recipeFields[@{{$index}}][type]" class="type-input" placeholder="bottle"/>
+                    <input type="text" id="quantity" v-model="newItemQty" name="recipeFields[@{{$index}}][quantity]" class="qty-input" placeholder="1" />
                 </div>
 
                 <div class="ingredient">
                     <label for="item" class="sub-heading">Item</label>
-                    <input type="text" id="item" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="shampoo"/>
+                    <input type="text" id="item" v-model="newItemName" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="shampoo"/>
                 </div>
 
                 <div class="item-categories">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Department <i class="fa fa-angle-down"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @foreach($itemCategories as $category)
-                                <a  class="dropdown-item">{{$category->name}}</a>
-                            @endforeach
-                        </div>
-                    </div>
+                    <select name="category" v-model="newItemCategoryId">
+                        @foreach($itemCategories as $category)
+                            <option value="{{ $category->id }}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <button type="button" v-on:click="addItem(recipeFields)">Add</button>
                 </div>
             </div>
         </div>
@@ -52,48 +45,17 @@
             <ul class="category">
                 <li class="category-title"><h3>General</h3></li>
                 <ul class="recipes list-items">
-                    <li v-for="item in items()">
+                    <li v-for="item in computedItems">
                         <span>@{{ item.quantity }}</span>
                         <span>@{{ item.name }} </span>
+
+                        <input type="hidden" name="items[@{{$index}}][quantity]" value="@{{ item.quantity }}">
+                        <input type="hidden" name="items[@{{$index}}][name]" value="@{{ item.name }}">
+                        <input type="hidden" name="items[@{{$index}}][item_category_id]" value="@{{ item.item_category_id }}">
                     </li>
                 </ul>
             </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Dairy</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        <li>1 gallon milk</li>
-                        <li>2 dozen eggs</li>
-                        <li>1 tub butter</li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Canned Goods</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        <li>3 15 oz cans tomato soup</li>
-                        <li>1 10 oz can cream of chicken</li>
-                        <li>1 28oz can of crushed tomatoes</li>
-                    </ul>
-                </li>
-
-            </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Grains</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        <li>2 loaves bread</li>
-                        <li>1 set muffins</li>
-                    </ul>
-                </li>
-
-            </ul>
         </div>
-
-        {{--<div class="hidden-recipes">--}}
-            {{--<v-for="" input value="" name="recipesIds[]" />--}}
-        {{--</div>--}}
 
         <div class="save-button">
             <button type="submit" class="pr-button">Save List</button>

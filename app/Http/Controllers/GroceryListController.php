@@ -58,13 +58,16 @@ class GroceryListController extends Controller
      */
     public function store(Request $request)
     {
-        if($recipeIds = $request->input('recipeIds')){
-            $recipes = Recipe::findOrFail($recipeIds);
-        }
+        $items = [];
 
         $grocerylist = GroceryList::create(['user_id' => \Auth::user()->getKey(), 'title' => $request->title]);
 
-        return view('grocerylists.manage', compact('grocerylist', 'recipes'));
+        foreach($request->input('items') as $itemJson)
+        {
+            $items[] = Item::create($itemJson);
+        }
+
+        return view('grocerylists.manage', compact('grocerylist', 'items'));
     }
 
     /**
