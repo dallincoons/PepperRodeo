@@ -11,7 +11,6 @@ export default {
             title          : '',
             newItemName    : '',
             newItemQty     : '',
-            newItemType    : ''
         }
     },
     methods  : {
