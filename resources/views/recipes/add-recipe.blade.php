@@ -6,21 +6,21 @@
         {!! Form::open(array('url' => '/recipe')) !!}
             <div class="recipe-section">
                 <label for="title" class="form-heading">Title*</label>
-                <input type="text" id="title" name="title" placeholder="September Grocery List"/>
+                <input type="text" id="title" name="title" placeholder="Chicken & Rice Casserole"/>
             </div>
 
             <div class="recipe-section">
                 <label for="category" class="form-heading">Category*</label>
                 <div class="recipe-section__selection-group--category">
-                    <select v-model="selectedCategory" class="recipe-section__selection--category" name="category" style="flex:1;">
+                    <select v-model="selectedCategory" class="recipe-section__selection--category" name="category" style="flex:1;" >
                             <option v-for="category in categories" value="@{{category.id}}">@{{category.name}}</option>
                     </select>
-                    <button type="button" v-show="!addingCategory" v-on:click="this.addingCategory = true">Add New</button>
+                    <button type="button" v-show="!addingCategory" v-on:click="this.addingCategory = true" class="recipe-section__button"><i class="fa fa-plus-circle"></i> Add New</button>
                 </div>
-                <div v-show="addingCategory">
+                <div v-show="addingCategory" class="addingCategory">
                     <input v-model="newCategory" />
-                    <button v-on:click="addNewCategory()" type="button">Add</button>
-                    <button v-on:click="this.addingCategory = false" type="button">Cancel</button>
+                    <button v-on:click="addNewCategory()" type="button" class="recipe-section__button"><i class="fa fa-plus-circle"></i> Add</button>
+                    <button v-on:click="this.addingCategory = false" type="button" class="recipe-section__button">Cancel</button>
                 </div>
             </div>
 
@@ -44,16 +44,11 @@
                     </div>
 
                     <div class="dept">
-                        {{--<div class="dropdown">--}}
-                            {{--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                                {{--Department <i class="fa fa-angle-down"></i>--}}
-                            {{--</button>--}}
-                            <select name="recipeFields[@{{$index}}][item_category_id]">
+                            <select name="recipeFields[@{{$index}}][item_category_id]" class="recipe-section__selection--category dept_select">
                                 @foreach($itemCategories as $category)
                                     <option value="{{$category->id}}"  class="dropdown-item">{{$category->name}}</option>
                                 @endforeach
                             </select>
-                        {{--</div>--}}
                     </div>
                 </div>
             </div>
