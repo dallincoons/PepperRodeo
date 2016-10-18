@@ -16,6 +16,12 @@
 }
 .recipe-section__selection--category {
   flex: 1;
+  border: 1px #acacac solid;
+  font-size: 1.3em;
+  color: #3f3f3f;
+  font-weight: lighter;
+  background: #FFFFFF;
+  margin-right: 10px;
 }
 
 .recipe-form input, textarea {
@@ -28,9 +34,21 @@
   padding-left: 3px;
 }
 
+.recipe-section__button {
+  color: #ff4b2e;
+  background: #FFFFFF;
+  border: 1px solid #fc907e;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.addingCategory {
+  margin-top: 10px;
+}
+
 .ingredient-section {
   display: flex;
-
+  flex-wrap: wrap;
 
 }
 
@@ -62,22 +80,12 @@
 }
 
 .dept {
-  width: 15%;
-  height: 34px;
   align-self: flex-end;
+  margin-bottom: 2px;
 }
 
-.dept button {
-  color: #ff4b2e;
-  width: 100px;
-  padding: 5px;
-}
-
-.dept .dropdown-menu a {
-  display: block;
-  color: #ff4b2e;
-  text-decoration: none;
-  padding: 3px 0 5px 3px;
+.dept_select {
+  padding: 2px;
 }
 
 .sub-heading {
@@ -95,8 +103,13 @@
 .add-ingredient {
   margin: 5px 5px 15px 5px;
   font-size: 1.3em;
-  color: #acacac;
+  color: #ff4b2e;
   font-weight: lighter;
+
+}
+
+.add-ingredient:hover {
+  cursor: pointer;
 }
 
 .add-ingredient i {
