@@ -28,15 +28,17 @@
                     <input type="text" id="item" v-model="newItemName" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="shampoo"/>
                 </div>
 
+
                 <div class="item-categories">
+                    <label for="category" class="sub-heading dept-label">Department</label>
                     <select name="category" v-model="newItemCategoryId">
                         @foreach($itemCategories as $category)
                             <option value="{{ $category->id }}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
-                <div>
-                    <button type="button" v-on:click="addItem(recipeFields)">Add</button>
+                <div class="add-wrapper">
+                    <button type="button" v-on:click="addItem(recipeFields)" class="add-button">Add</button>
                 </div>
             </div>
         </div>
@@ -63,11 +65,26 @@
 
         {{Form::close()}}
     </div>
-    <div v-if="showRecipes">
-        <ul>
-            <button v-on:click="addRecipes(recipesToAdd)">Save</button>
-            <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd"/><li>
-        </ul>
+    <div v-if="showRecipes" class="choose-recipe">
+        <h3 class="page-title">My Recipes</h3>
+
+        <div class="category-wrapper">
+            <ul class="category">
+                @foreach($recipes as $key => $recipe)
+                    <li class="category-title"><h3>{{$key}}</h3></li>
+                    <li>
+                        <ul class="recipes">
+                            @foreach($recipe as $recipe2)
+                                <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd" class="checkbox"/><li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+            <button v-on:click="addRecipes(recipesToAdd)" class="pr-button save-button">Add</button>
+        </div>
+
+
     </div>
 
 @endsection
