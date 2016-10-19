@@ -22,13 +22,11 @@
     </ul>
 
     <h3 class="form-heading">Directions</h3>
+    <p>{{$recipe->directions}}</p>
 
-
-
-    <h5 class="add-list-title page-title">Add to Grocery List</h5>
-    <ul class="lists">
+    <h5 class="add-list-title page-title"><a v-on:click="toggleShowListSelection()">Add to Grocery List</a></h5>
+    <ul class="lists" v-show="showListSelection">
         @foreach($listsWithoutRecipe as $grocerylist)
-            {{--<li @click="addToGroceryList({{$grocerylist->getKey()}})">{{$grocerylist->title}}</li>--}}
             <li><i class="fa fa-list"></i> <a href="/grocerylist/{{$grocerylist->getKey()}}/add/{{$recipe->getKey()}}">{{$grocerylist->title}}</a></li>
         @endforeach
     </ul>
