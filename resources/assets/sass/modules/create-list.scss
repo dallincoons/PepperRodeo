@@ -57,6 +57,7 @@
 .items-inputs div {
   flex: 1 1 auto;
   margin: 0 5px 2px 5px;
+  //display: flex;
 }
 
 .create-list .category-wrapper {
@@ -90,3 +91,52 @@
   font-size: 2em;
 }
 
+.choose-recipe .category {
+  margin-bottom: 10%;
+}
+
+.choose-recipe .save-button {
+  font-size: 1.5em;
+  margin-bottom: 20%;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  font-weight: bolder;
+  display: inline;
+}
+
+.add-wrapper {
+  display: flex;
+}
+
+.add-button {
+  border: #ff4b2e solid 3px;
+  color: #ff4b2e;
+  text-align: center;
+  align-self: flex-end;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+
+.item-categories select {
+  width: 100%;
+  flex: 1;
+  border: 1px #acacac solid;
+  font-size: 1.3em;
+  color: #3f3f3f;
+  font-weight: lighter;
+  background: #FFFFFF;
+  margin-right: 10px;
+  align-self: flex-end;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.dept-label {
+  height: 20px;
+}
