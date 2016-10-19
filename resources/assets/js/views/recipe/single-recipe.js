@@ -1,7 +1,8 @@
     export default {
         data: function() {
             return {
-                recipeId : ''
+                recipeId : '',
+                showListSelection : false
             }
         },
         methods : {
@@ -9,6 +10,9 @@
                 this.$http.put('/grocerylist/' + groceryListId, {'recipe_id' : this.recipeId}).then(function(response){
                     console.log(response.data);
                 });
+            },
+            toggleShowListSelection : function(){
+                this.showListSelection = !this.showListSelection;
             }
         }
     }
