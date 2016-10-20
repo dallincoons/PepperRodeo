@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>What items do you want to add?</h2>
+<div class="manage-wrapper">
 
-    {{Form::open(['url' => '/grocerylist/' . $grocerylist->getKey(), 'method' => 'patch'])}}
-    <ul>
+    <h3 class="page-title">What items do you want to add?</h3>
+
+    {{Form::open(['url' => '/grocerylist/' . $grocerylist->getKey(), 'method' => 'patch', 'class' => 'manage-form'])}}
+    <ul class="items-to-add">
         @foreach($items as $item)
             <li>
                 <input value="{{$item->quantity}}" />
@@ -13,6 +15,10 @@
             </li>
         @endforeach
     </ul>
-    {{Form::submit()}}
+
+    <button class="pr-button manage-button">{{Form::submit()}}</button>
+
+</div>
+
     {{Form::close()}}
 @endsection
