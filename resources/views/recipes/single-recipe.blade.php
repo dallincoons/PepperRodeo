@@ -17,7 +17,7 @@
     <h3 class="form-heading">Ingredients</h3>
     <ul class="ingredients">
         @foreach($recipe->items as $item)
-            <li>{{$item->quantity}} {{$item->name}}</li>
+            <li>{{$item->quantity}} {{$item->type}} {{$item->name}}</li>
         @endforeach
     </ul>
 
