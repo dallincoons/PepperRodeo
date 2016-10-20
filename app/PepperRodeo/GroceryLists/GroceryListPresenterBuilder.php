@@ -64,7 +64,7 @@ class GroceryListPresenterBuilder
     {
         $newCollection = new Collection();
         if(is_object($likeItems->first())) {
-            $newCollection->add(new Item(['name' => $likeItems->first()->name, 'quantity' => $likeItems->sum('quantity')]));
+            $newCollection->add(new Item(['name' => $likeItems->first()->name, 'quantity' => $likeItems->sum('quantity'), 'type' => $likeItems->first()->type]));
         }
 
         foreach ($likeItems->pluck('id') as $id) {

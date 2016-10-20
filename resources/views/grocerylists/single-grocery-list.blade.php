@@ -31,7 +31,7 @@
                 <li>
                     <ul class="recipes list-items">
                         @foreach($grocerylist->items as $list_item)
-                            <li>{{$list_item->quantity}} {{$list_item->name}}</li>
+                            <li>{{$list_item->quantity}} {{$list_item->type}} {{$list_item->name}}</li>
                         @endforeach
                     </ul>
                 </li>
