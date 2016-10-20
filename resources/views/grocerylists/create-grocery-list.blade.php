@@ -49,6 +49,7 @@
                 <ul class="recipes list-items">
                     <li v-for="item in computedItems">
                         <span>@{{ item.quantity }}</span>
+                        <span>@{{ item.type }}</span>
                         <span>@{{ item.name }} </span>
 
                         <input type="hidden" name="items[@{{$index}}][quantity]" value="@{{ item.quantity }}">
@@ -69,19 +70,11 @@
         <h3 class="page-title">My Recipes</h3>
 
         <div class="category-wrapper">
-            <ul class="category">
-                @foreach($recipes as $key => $recipe)
-                    <li class="category-title"><h3>{{$key}}</h3></li>
-                    <li>
-                        <ul class="recipes">
-                            @foreach($recipe as $recipe2)
-                                <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd" class="checkbox"/><li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
+            <ul class="category recipes">
+                    <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd" class="checkbox"/><li>
             </ul>
             <button v-on:click="addRecipes(recipesToAdd)" class="pr-button save-button">Add</button>
+            <button v-on:click="setShowRecipes(false)" class="pr-button save-button">Back</button>
         </div>
 
 
