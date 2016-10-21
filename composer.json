@@ -30,7 +30,10 @@
         "classmap": [
             "tests/TestCase.php"
         ],
-        "files" : ["tests/test_helpers.php"]
+        "files" : [
+            "tests/test_helpers.php",
+            "app/helpers.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [
