@@ -97,6 +97,11 @@
     display: flex;
   }
 
+  .pr-nav-lg .active a{
+    text-decoration: underline;
+  }
+
+
   .pr-content {
     flex: 1;
   }
