@@ -35,17 +35,37 @@ export default {
         removeItem(itemIndex){
             this.items.splice(itemIndex, 1);
         },
+        removeAddedRecipe(recipeIndex){
+            this.addedRecipes.splice(recipeIndex, 1);
+        },
         addRecipes(recipeIds){
             var self = this;
             recipeIds.forEach(function (recipeId) {
                 self.addedRecipes.push(self.unaddedRecipes[recipeId]);
-                delete self.unaddedRecipes[recipeId];
-                self.recipesToAdd = [];
-                self.addedRecipes.forEach(function (recipe) {
-                    self.items = self.items.concat(recipe.items);
+                var recipe = self.unaddedRecipes[recipeId];
+                recipe.items.forEach(function(item){
+                    item.recipe_id = recipe.id;
+                    self.items.push(item);
                 });
+                self.recipesToAdd = [];
+                delete self.unaddedRecipes[recipeId];
             });
+
             this.setShowRecipes(false);
+        },
+        removeRecipe(recipeId, index){
+            var self = this;
+            var itemIndexes = [];
+            self.items.forEach(function(item){
+                if(item.recipe_id == recipeId) {
+                    itemIndexes.push(self.items.indexOf(item));
+                }
+            });
+            itemIndexes = itemIndexes.sort(function(a, b){return b-a});
+            itemIndexes.forEach(function(index){
+                self.items.splice(index, 1);
+            });
+            self.removeAddedRecipe(index);
         }
     }
 }
