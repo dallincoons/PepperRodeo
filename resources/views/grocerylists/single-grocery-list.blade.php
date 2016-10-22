@@ -36,30 +36,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Canned Goods</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        <li>3 15 oz cans tomato soup</li>
-                        <li>1 10 oz can cream of chicken</li>
-                        <li>1 28oz can of crushed tomatoes</li>
-                    </ul>
-                </li>
-
-            </ul>
-            <ul class="category">
-                <li class="category-title"><h3>Grains</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        <li>2 loaves bread</li>
-                        <li>1 set muffins</li>
-                    </ul>
-                </li>
-
-            </ul>
-
         </div>
-
 
     </div>
 

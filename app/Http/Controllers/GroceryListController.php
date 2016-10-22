@@ -27,16 +27,6 @@ class GroceryListController extends Controller
     }
 
     /**
-     * Show grocery list manager view
-     */
-    public function manage(Request $request, GroceryList $grocerylist, Recipe $recipe)
-    {
-        $recipes[] = $recipe;
-
-        return view('grocerylists.manage', compact('grocerylist', 'recipes'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -67,7 +57,9 @@ class GroceryListController extends Controller
             $items[] = Item::create($itemJson);
         }
 
-        return view('grocerylists.manage', compact('grocerylist', 'items'));
+        $grocerylist->items()->saveMany($items);
+
+        return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }
 
     /**
