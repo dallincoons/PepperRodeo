@@ -32,23 +32,20 @@ export default {
             this.newItemName       = '';
             this.newItemCategoryId = '';
         },
+        removeItem(itemIndex){
+            this.items.splice(itemIndex, 1);
+        },
         addRecipes(recipeIds){
             var self = this;
             recipeIds.forEach(function (recipeId) {
                 self.addedRecipes.push(self.unaddedRecipes[recipeId]);
                 delete self.unaddedRecipes[recipeId];
                 self.recipesToAdd = [];
+                self.addedRecipes.forEach(function (recipe) {
+                    self.items = self.items.concat(recipe.items);
+                });
             });
             this.setShowRecipes(false);
-        }
-    },
-    computed : {
-        computedItems : function () {
-            var items = this.items;
-            this.addedRecipes.forEach(function (recipe) {
-                items = items.concat(recipe.items);
-            });
-            return items;
         }
     }
 }

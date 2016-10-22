@@ -47,10 +47,11 @@
             <ul class="category">
                 <li class="category-title"><h3>General</h3></li>
                 <ul class="recipes list-items">
-                    <li v-for="item in computedItems">
+                    <li v-for="item in items">
                         <span>@{{ item.quantity }}</span>
                         <span>@{{ item.type }}</span>
                         <span>@{{ item.name }} </span>
+                        <span v-on:click="removeItem($index)">X</span>
 
                         <input type="hidden" name="items[@{{$index}}][quantity]" value="@{{ item.quantity }}">
                         <input type="hidden" name="items[@{{$index}}][name]" value="@{{ item.name }}">
