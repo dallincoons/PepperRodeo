@@ -18,7 +18,7 @@
                 <li>
                     <ul class="recipes">
                         @foreach($recipe as $recipe2)
-                            <li><a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a></li>
+                            <li><input type="checkbox" id="cbox1" value="first_checkbox" class="recipe-check"> <a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a> </li>
                         @endforeach
                     </ul>
                 </li>
