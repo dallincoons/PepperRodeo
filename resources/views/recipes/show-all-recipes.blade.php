@@ -18,7 +18,14 @@
                 <li>
                     <ul class="recipes">
                         @foreach($recipe as $recipe2)
-                            <li><input type="checkbox" id="cbox1" value="first_checkbox" class="recipe-check"> <a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a> </li>
+                            <li>
+                                <label class="control control--checkbox"><a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a>
+                                    <input type="checkbox" id="cbox1" value="first_checkbox" class="recipe-check">
+                                    <div class="control__indicator"></div>
+                                </label>
+
+
+                            </li>
                         @endforeach
                     </ul>
                 </li>
