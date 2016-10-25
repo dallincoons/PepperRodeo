@@ -51,7 +51,7 @@
                         <span>@{{ item.quantity }}</span>
                         <span>@{{ item.type }}</span>
                         <span>@{{ item.name }} </span>
-                        <span v-on:click="removeItem($index)">X</span>
+                        <span v-on:click="removeItem($index)" class="remove-item">X</span>
 
                         <input type="hidden" name="items[@{{$index}}][quantity]" value="@{{ item.quantity }}">
                         <input type="hidden" name="items[@{{$index}}][name]" value="@{{ item.name }}">
@@ -72,10 +72,20 @@
 
         <div class="category-wrapper">
             <ul class="category recipes">
-                    <li v-for="recipe in unaddedRecipes">@{{recipe.title}} <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd" class="checkbox"/><li>
+                <li v-for="recipe in unaddedRecipes" class="add-recipe-options">
+                    <label class="control control--checkbox"><a>@{{recipe.title}}</a>
+                        <input type="checkbox" value="@{{ recipe.id }}" v-model="recipesToAdd" class="recipe-check"/>
+                        <div class="control__indicator"></div>
+                    </label>
+                <li>
             </ul>
-            <button v-on:click="addRecipes(recipesToAdd)" class="pr-button save-button">Add</button>
-            <button v-on:click="setShowRecipes(false)" class="pr-button save-button">Back</button>
+
+            <div class="add-recipe-buttons">
+                <button v-on:click="setShowRecipes(false)" class="pr-button save-button"><i class="fa fa-chevron-circle-left"></i> Back</button>
+                <button v-on:click="addRecipes(recipesToAdd)" class="pr-button save-button"> Add <i class="fa fa-plus-circle"></i></button>
+            </div>
+
+
         </div>
 
 
