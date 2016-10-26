@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\RecipeRepository;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\Item;
 use App\Http\Requests\CreateRecipeRequest;
 use JavaScript;
-use App\Http\Requests;
 
 class RecipeController extends Controller
 {
@@ -18,18 +18,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = [];
+        $recipesWithCategories = RecipeRepository::recipesWithCategories();
 
-        foreach(Recipe::where('user_id', \Auth::user()->getKey())->with('category')->get() as $recipe)
-        {
-            $key = $recipe->category->name;
-            if(!isset($recipes[$key])){
-                $recipes[$key] = [];
-            }
-            array_push($recipes[$key], $recipe);
-        }
-
-        return view('recipes.show-all-recipes', compact('recipes'));
+        return view('recipes.show-all-recipes', compact('recipesWithCategories'));
     }
 
     /**
@@ -118,8 +109,10 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Recipe::destroy(\Request::input('recipeIds'));
+
+        return redirect('/recipe');
     }
 }
