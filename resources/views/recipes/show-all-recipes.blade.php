@@ -13,13 +13,13 @@
         </nav>
         <div class="category-wrapper">
             <ul class="category">
-                @foreach($recipes as $key => $recipe)
-                <li class="category-title"><h3>{{$key}}</h3></li>
+                @foreach($recipesWithCategories as $category => $recipes)
+                <li class="category-title"><h3>{{$category}}</h3></li>
                 <li>
                     <ul class="recipes">
-                        @foreach($recipe as $recipe2)
+                        @foreach($recipes as $recipe)
                             <li>
-                                <label class="control control--checkbox"><a href="recipe/{{$recipe2->id}}">{{$recipe2->title}}</a>
+                                <label class="control control--checkbox"><a href="recipe/{{$recipe->id}}">{{$recipe->title}}</a>
                                     <input type="checkbox" id="cbox1" value="first_checkbox" class="recipe-check">
                                     <div class="control__indicator"></div>
                                 </label>
