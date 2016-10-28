@@ -19,7 +19,9 @@
 </head>
 <body class="pepper_rodeo_body">
     <div class="pr-content">
-        @include('includes.nav')
+        @unless(!\Auth::user())
+            @include('includes.nav')
+        @endunless
 
         <component is="{{$vue or 'Default'}}" inline-template>
             @yield('content')
@@ -27,7 +29,10 @@
 
 
     </div>
-    @include('includes.footer')
+
+    @unless(!\Auth::user())
+        @include('includes.footer')
+    @endunless
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
