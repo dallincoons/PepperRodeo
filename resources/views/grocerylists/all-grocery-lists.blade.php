@@ -7,7 +7,6 @@
         <nav class="mini-nav">
             <ul>
                 <li><a href="/grocerylist/create"><i class="fa fa-plus"></i></a></li>
-                <li><a><i class="fa fa-pencil"></i></a></li>
                 <li><a><i class="fa fa-trash"></i></a></li>
             </ul>
         </nav>

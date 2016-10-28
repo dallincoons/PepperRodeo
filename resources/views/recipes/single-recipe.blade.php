@@ -7,7 +7,7 @@
     <h6 class="recipe-cat">Categories: <a>Lunch</a>, <a>Dinner</a></h6>
     <nav class="mini-nav">
         <ul>
-            <li><a><i class="fa fa-cart-plus"></i></a></li>
+            <li><a href="/recipe/create"><i class="fa fa-cart-plus"></i></a></li>
             <li><a><i class="fa fa-pencil"></i></a></li>
             <li><a><i class="fa fa-users"></i></a></li>
             <li><a><i class="fa fa-trash"></i></a></li>
