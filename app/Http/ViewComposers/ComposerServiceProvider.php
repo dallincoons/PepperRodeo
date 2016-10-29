@@ -15,7 +15,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \View::composer(['recipes.add-recipe', 'grocerylists.create-grocery-list'], function($view){
+        \View::composer(['recipes.add-recipe', 'grocerylists.create-grocery-list', 'recipes.edit-single'], function($view){
             $itemCategories = ItemCategory::all();
             $view->with('itemCategories', $itemCategories);
         });

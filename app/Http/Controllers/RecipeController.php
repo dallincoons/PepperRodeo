@@ -88,6 +88,10 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
+        $categories = \Auth::user()->recipeCategories()->get();
+
+        Javascript::put(['categories' => $categories->toArray()]);
+
         return view('recipes.edit-single', compact('recipe'));
     }
 
@@ -98,9 +102,24 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Recipe $recipe)
     {
-        //
+        \DB::transaction(function () use($recipe, $request){
+
+            $itemsJson = $request->items;
+            $items = [];
+
+            foreach ($itemsJson as $itemJson) {
+                $items[] = Item::create($itemJson);
+            }
+
+            $recipe->items()->sync([]);
+
+            $recipe->items()->saveMany($items);
+
+        });
+
+        return redirect('/recipe/' . $recipe->getKey());
     }
 
     /**
