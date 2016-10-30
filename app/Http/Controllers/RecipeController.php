@@ -91,6 +91,8 @@ class RecipeController extends Controller
         $categories = \Auth::user()->recipeCategories()->get();
 
         Javascript::put(['categories' => $categories->toArray()]);
+        Javascript::put(['selectedCategory' => $recipe->recipe_category_id]);
+        Javascript::put(['recipeItems' => $recipe->items->toArray()]);
 
         return view('recipes.edit-single', compact('recipe'));
     }

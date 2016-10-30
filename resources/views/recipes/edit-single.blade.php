@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['vue' => 'edit-recipe'])
 
 @section('content')
     {!! Form::model($recipe, ['route' => ['recipe.update', $recipe->getKey(), 'method' => 'POST']]) !!}
