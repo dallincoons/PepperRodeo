@@ -1,7 +1,7 @@
 @extends('layouts.app', ['vue' => 'edit-recipe'])
 
 @section('content')
-    {!! Form::model($recipe, ['route' => ['recipe.update', $recipe->getKey(), 'method' => 'POST']]) !!}
+    {!! Form::model($recipe, ['method' => 'POST', 'route' => ['recipe.update', $recipe->getKey()]]) !!}
         {!! method_field('patch') !!}
 
         @include('recipes.includes.recipe-form')

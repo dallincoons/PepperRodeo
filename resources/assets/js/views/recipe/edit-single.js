@@ -7,6 +7,7 @@ export default {
             selectedCategory : PepperRodeo.selectedCategory,
             recipeItems : PepperRodeo.recipeItems,
             recipeFields : [],
+            category_ids : [],
             newCategory : '',
         }
     },

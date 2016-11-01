@@ -21,6 +21,7 @@ class RecipeSeeder extends Seeder
             $recipe = Recipe::create([
                 'user_id' => 1,
                 'title' => $faker->word,
+                'directions' => $faker->paragraph,
                 'recipe_category_id' => factory(RecipeCategory::class)->create(['user_id' => 1])->getKey()
             ]);
 

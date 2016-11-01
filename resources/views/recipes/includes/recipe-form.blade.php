@@ -1,6 +1,6 @@
 <div class="recipe-section">
     <label for="title" class="form-heading">Title*</label>
-    {!! Form::text('title', 'Chicken & Rice Casserole', ['id' => 'title']) !!}
+    {!! Form::text('title', null, ['id' => 'title', 'placeholder' => 'Chicken & Rice Casserole']) !!}
 </div>
 
 <div class="recipe-section">
@@ -22,23 +22,24 @@
 
 <div class="ingredient-section">
     <div v-for="item in recipeItems" track-by="$index" class="ingredient-inputs">
+        <input type="hidden" name="recipeFields[@{{$index}}][id]" value="@{{ item.id }}"/>
         <div class="qty">
             <label for="quantity" class="sub-heading">Qty</label>
-            <input type="text" id="quantity" name="recipeFields[@{{$index}}][quantity]" class="qty-input" placeholder="3" />
+            <input type="text" id="quantity" name="recipeFields[@{{$index}}][quantity]" class="qty-input" placeholder="3" value="@{{ item.quantity }}"/>
         </div>
 
         <div class="type">
             <label for="type" class="sub-heading">Type</label>
-            <input type="text" id="type" name="recipeFields[@{{$index}}][type]" class="type-input" placeholder="cups"/>
+            <input type="text" id="type" name="recipeFields[@{{$index}}][type]" class="type-input" placeholder="cups" value="@{{ item.type }}" />
         </div>
 
         <div class="ingredient">
             <label for="ingredient" class="sub-heading">Ingredient</label>
-            <input type="text" id="ingredient" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="flour"/>
+            <input type="text" id="ingredient" name="recipeFields[@{{$index}}][name]" class="ingredient-input" placeholder="flour" value="@{{ item.name }}"/>
         </div>
 
         <div class="dept">
-            <select name="recipeFields[@{{$index}}][item_category_id]" class="recipe-section__selection--category dept_select">
+            <select name="recipeFields[@{{$index}}][item_category_id]" class="recipe-section__selection--category dept_select" v-model="category_ids[$index] =  item.item_category_id">
                 @foreach($itemCategories as $category)
                     <option value="{{$category->id}}"  class="dropdown-item">{{$category->name}}</option>
                 @endforeach
@@ -48,10 +49,9 @@
 </div>
 
 <div class="add-ingredient" v-on:click="addNewItem()"><i class="fa fa-plus-circle"></i> Add ingredient</div>
-
 <div class="recipe-section">
     <label for="directions" class="form-heading">Directions*</label>
-    <textarea name="directions" placeholder="Preheat oven to 350°"></textarea>
+    {!! Form::textarea('directions', null, ['placeholder' => 'Preheat oven to 350°']) !!}
 </div>
 
 @if (count($errors) > 0)
