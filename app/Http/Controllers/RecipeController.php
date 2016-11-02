@@ -106,34 +106,13 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        \DB::transaction(function () use($recipe, $request){
-            $recipe->title = $request->title;
-            $recipe->recipe_category_id = $request->category;
-            $recipe->directions = $request->directions;
+        RecipeRepository::updateRecipe($recipe, [
+            'title' => $request->title,
+            'recipe_category_id' => $request->category,
+            'directions' => $request->directions
+        ]);
 
-            if($recipe->isDirty()){
-                $recipe->save();
-            }
-
-            foreach($request->input('recipeFields') as $itemJson)
-            {
-                $item = Item::find($itemJson['id']);
-                if($item && $recipe->items->contains($item->id)){
-                    $item->quantity = $itemJson['quantity'];
-                    $item->type = $itemJson['type'];
-                    $item->name = $itemJson['name'];
-                    $item->item_category_id = $itemJson['item_category_id'];
-
-                    if($item->isDirty()){
-                        $item->save();
-                    }
-                }else{
-                    $item = Item::create($itemJson);
-
-                    $recipe->items()->save($item);
-                }
-            }
-        });
+        RecipeRepository::updateRecipeItems($recipe, $request->input('recipeFields'));
 
         return redirect('/recipe/' . $recipe->getKey());
     }
