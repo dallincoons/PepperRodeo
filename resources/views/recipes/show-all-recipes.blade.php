@@ -22,7 +22,7 @@
                     <ul class="recipes">
                         @foreach($recipes as $recipe)
                             <li>
-                                <label class="control control--checkbox"><a href="recipe/{{$recipe->id}}">{{$recipe->title}}</a>
+                                <label class="control control--checkbox"><a href="/recipe/{{$recipe->id}}">{{$recipe->title}}</a>
                                     <input type="checkbox" id="cbox1" name="recipeIds[]" class="recipe-check" value="{{$recipe->id}}">
                                     <div class="control__indicator"></div>
                                 </label>
