@@ -34,21 +34,25 @@ class RecipeRepository
 
     public static function updateRecipeItems($recipe, $recipeFields)
     {
-        foreach($recipeFields as $itemJson)
+        $recipeFields = collect($recipeFields);
+        $goodIds = $recipe->items->pluck('id')->diff($recipeFields->pluck('id'));
+        $deleteIds = $recipe->items->pluck('id')->diff($goodIds);
+
+        Item::destroy($deleteIds->toArray());
+
+        foreach($recipe->items->whereIn('id', $goodIds->toArray()) as $itemJson)
         {
             $item = Item::find($itemJson['id']);
-            if($item && $recipe->items->contains($item->id)){
-                $item->quantity = $itemJson['quantity'];
-                $item->type = $itemJson['type'];
-                $item->name = $itemJson['name'];
-                $item->item_category_id = $itemJson['item_category_id'];
+            if(!$item || !$recipe->items->contains($item->id)){
+                $item = new Item();
+            }
 
-                if($item->isDirty()){
-                    $item->save();
-                }
-            }else{
-                $item = Item::create($itemJson);
+            $item->quantity = $itemJson['quantity'];
+            $item->type = $itemJson['type'];
+            $item->name = $itemJson['name'];
+            $item->item_category_id = $itemJson['item_category_id'];
 
+            if($item->isDirty()){
                 $recipe->items()->save($item);
             }
         }

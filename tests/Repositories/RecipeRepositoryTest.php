@@ -95,4 +95,64 @@ class RecipeRepositoryTest extends TestCase
 
         $this->assertEquals($newName, Item::find($recipeItems->first()->getKey())->name);
     }
+
+    /**
+     * @group repository-tests
+     * @group recipe-repository-tests
+     * @test
+     */
+    public function update_and_add_recipe_items()
+    {
+        $recipe = factory(Recipe::class)->create();
+
+        RecipeRepository::updateRecipeItems($recipe, [
+            [
+                'id' => '',
+                'quantity' => 1,
+                'type' => str_random(),
+                'item_category_id' => 2,
+                'name' => str_random()
+            ],
+            [
+                'id' => '',
+                'quantity' => 1,
+                'type' => str_random(),
+                'item_category_id' => 2,
+                'name' => str_random()
+            ],
+        ]);
+
+        $this->assertEquals(2, $recipe->fresh()->items->count());
+    }
+
+    /**
+     * @group repository-tests
+     * @group recipe-repository-tests
+     * @test
+     */
+    public function update_and_delete_recipe_items()
+    {
+        $recipe = factory(Recipe::class)->create();
+        $recipeItems = factory(Item::class, 5)->create();
+        $recipe->items()->saveMany($recipeItems);
+
+        RecipeRepository::updateRecipeItems($recipe, [
+            [
+                'id' => $recipeItems->first()->getKey(),
+                'quantity' => $recipeItems->first()->quantity,
+                'type' => $recipeItems->first()->type,
+                'item_category_id' => $recipeItems->first()->item_category_id,
+                'name' => str_random()
+            ],
+            [
+                'id' => $recipeItems->last()->getKey(),
+                'quantity' => $recipeItems->first()->quantity,
+                'type' => $recipeItems->first()->type,
+                'item_category_id' => $recipeItems->first()->item_category_id,
+                'name' => str_random()
+            ]
+        ]);
+
+        $this->assertEquals(3, $recipe->fresh()->items->count());
+    }
 }
