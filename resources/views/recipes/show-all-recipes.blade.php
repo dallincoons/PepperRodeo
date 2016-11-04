@@ -10,7 +10,6 @@
         <nav class="mini-nav recipe-nav">
              <ul>
                  <li><a href="/recipe/create"><i class="fa fa-plus"></i></a></li>
-                 <li><a href="#"><i class="fa fa-cart-plus"></i></a></li>
                  <li><a v-on:click="deleteRecipes(recipesChecked)"><i class="fa fa-trash"></i></a></li>
              </ul>
         </nav>
