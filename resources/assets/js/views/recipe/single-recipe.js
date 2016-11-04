@@ -13,6 +13,9 @@
             },
             toggleShowListSelection : function(){
                 this.showListSelection = !this.showListSelection;
+            },
+            submitDeleteRecipe : function(){
+                document.getElementById('recipe-delete').submit();
             }
         }
     }

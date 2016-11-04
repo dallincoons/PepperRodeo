@@ -123,7 +123,20 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Recipe $recipe)
+    {
+        $recipe->delete();
+
+        return redirect('/recipe');
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMultiple()
     {
         Recipe::destroy(\Request::input('recipeIds'));
 

@@ -3,7 +3,7 @@
 @section('content')
         <h2 class="page-title">My Recipes</h2>
 
-        <form method="POST" action="/recipe/delete" id="deleteForm">
+        <form method="POST" action="/recipe/deleteMultiple" id="deleteForm">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
