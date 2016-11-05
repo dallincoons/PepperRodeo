@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import AllGroceryLists from './views/grocerylists/all-grocery-lists.js';
+import SingleList from './views/grocerylists/single-list.js';
 import SingleRecipe from './views/recipe/single-recipe.js';
 import CreateRecipe from './views/recipe/create-recipe.js';
 import ShowAllRecipes from './views/recipe/show-all-recipes.js';
@@ -11,6 +12,6 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAt
 
 new Vue({
     el: '#PepperRodeoApp',
-    components: { AllGroceryLists, SingleRecipe, CreateRecipe, CreateGroceryList, ShowAllRecipes, EditRecipe }
+    components: { AllGroceryLists, SingleRecipe, CreateRecipe, CreateGroceryList, ShowAllRecipes, EditRecipe, SingleList }
 });
 

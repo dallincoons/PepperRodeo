@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['vue' => 'single-list'])
 
 @section('content')
     <div class="grocery-list-wrapper">
@@ -8,7 +8,11 @@
         <nav class="mini-nav">
             <ul class="list-nav">
                 <li><a><i class="fa fa-pencil"></i></a></li>
-                <li><a><i class="fa fa-trash"></i></a></li>
+                <li><form action="/grocerylist/{{$grocerylist->id}}" method="POST" id="list-delete">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <a v-on:click="submitDeleteList()"><i class="fa fa-trash"></i></a>
+                </form></li>
             </ul>
         </nav>
 

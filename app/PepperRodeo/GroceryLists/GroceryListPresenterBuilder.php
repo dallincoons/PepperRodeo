@@ -27,6 +27,8 @@ class GroceryListPresenterBuilder
             }
         }
 
+        $presenter['id'] = $grocerylist->id;
+
         return $presenter;
     }
 
