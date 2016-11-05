@@ -1,11 +1,12 @@
-@extends('layouts.app', ['vue' => 'create-grocery-list'])
+@extends('layouts.app', ['vue' => 'edit-grocery-list'])
 
 @section('content')
     <div class="create-list" v-if="!showRecipes">
         <h2 class="page-title">Create List</h2>
-        {{Form::open(['url' => '/grocerylist'])}}
-            @include('grocerylists.includes.list-form')
-        {{Form::close()}}
+    {!! Form::model($grocerylist, ['method' => 'POST', 'route' => ['grocerylist.update', $grocerylist->id]]) !!}
+        @include('grocerylists.includes.list-form')
+    {{Form::close()}}
+
     </div>
     <div v-if="showRecipes" class="choose-recipe">
         <h3 class="page-title">My Recipes</h3>
