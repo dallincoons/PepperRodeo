@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Item;
-use App\ItemCategory;
 use Illuminate\Http\Request;
 use App\GroceryList;
 use App\PepperRodeo\GroceryLists\GroceryListPresenterBuilder;
@@ -58,8 +57,12 @@ class GroceryListController extends Controller
         }
 
         $grocerylist->items()->saveMany($items);
+        foreach($request->recipeIds as $recipeId)
+        {
+            $grocerylist->recipes()->save(Recipe::find($recipeId));
+        }
 
-        return view('grocerylists.single-grocery-list', compact('grocerylist'));
+        return redirect('/grocerylist/' . $grocerylist->getKey());
     }
 
     /**
@@ -81,9 +84,12 @@ class GroceryListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(GroceryList $grocerylist)
     {
-        //
+        JavaScript::put(['items' => $grocerylist->items]);
+        JavaScript::put(['addedRecipes' => $grocerylist->recipes]);
+
+        return view('grocerylists.edit-grocery-list', compact('grocerylist'));
     }
 
     /**

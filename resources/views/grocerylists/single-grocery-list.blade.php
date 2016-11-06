@@ -7,7 +7,7 @@
 
         <nav class="mini-nav">
             <ul class="list-nav">
-                <li><a><i class="fa fa-pencil"></i></a></li>
+                <li><a href="/grocerylist/{{$grocerylist->id}}/edit"><i class="fa fa-pencil"></i></a></li>
                 <li><form action="/grocerylist/{{$grocerylist->id}}" method="POST" id="list-delete">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -19,15 +19,6 @@
         <div class="list-view-toggle">
             <a class="toggle-active">By Items</a><a class="toggle-inactive">By Recipe</a>
         </div>
-
-        @if(count($grocerylist->recipes))
-            <h4>Recipes</h4>
-            <ul>
-                @foreach($grocerylist->recipes as $recipe)
-                    <li>{{$recipe->title}}</li>
-                @endforeach
-            </ul>
-        @endif
 
         <div class="category-wrapper">
             <ul class="category">
