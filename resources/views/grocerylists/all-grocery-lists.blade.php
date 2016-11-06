@@ -13,7 +13,13 @@
 
         <ul class="lists">
             @foreach($grocerylists as $list)
-                <li><i class="fa fa-list"></i> <a href="grocerylist/{{$list->id}}">{{$list->title}}</a></li>
+                <li class="list">
+                    <label class="control control--checkbox"><i class="fa fa-list list-info"></i> <a href="grocerylist/{{$list->id}}" class="list-info">{{$list->title}}</a>
+                        <input type="checkbox" id="cbox1" name="listIds[]" class="recipe-check" value="{{$list->id}}">
+                        <div class="control__indicator"></div>
+                    </label>
+                </li>
+                <li></li>
             @endforeach
         </ul>
     </div>
