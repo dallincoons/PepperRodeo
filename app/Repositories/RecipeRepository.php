@@ -24,7 +24,7 @@ class RecipeRepository
     public static function updateRecipe($recipe, $recipeData)
     {
         $recipe->title = $recipeData['title'];
-        $recipe->recipe_category_id = $recipeData['category'];
+        $recipe->recipe_category_id = $recipeData['recipe_category_id'];
         $recipe->directions = $recipeData['directions'];
 
         if($recipe->isDirty()){
@@ -35,24 +35,28 @@ class RecipeRepository
     public static function updateRecipeItems($recipe, $recipeFields)
     {
         $recipeFields = collect($recipeFields);
-        $goodIds = $recipe->items->pluck('id')->diff($recipeFields->pluck('id'));
-        $deleteIds = $recipe->items->pluck('id')->diff($goodIds);
 
-        Item::destroy($deleteIds->toArray());
-
-        foreach($recipe->items->whereIn('id', $goodIds->toArray()) as $itemJson)
+        foreach( $recipe->items as $item )
         {
-            $item = Item::find($itemJson['id']);
-            if(!$item || !$recipe->items->contains($item->id)){
-                $item = new Item();
+            if( $itemJson = $recipeFields->whereLoose('id', $item->id)->first() ){
+
+                $item->quantity = $itemJson['quantity'];
+                $item->type = $itemJson['type'];
+                $item->name = $itemJson['name'];
+                $item->item_category_id = $itemJson['item_category_id'];
+
+                if($item->isDirty()){
+                    $item->save();
+                }
+            }else{
+                $item->delete();
             }
+        }
 
-            $item->quantity = $itemJson['quantity'];
-            $item->type = $itemJson['type'];
-            $item->name = $itemJson['name'];
-            $item->item_category_id = $itemJson['item_category_id'];
-
-            if($item->isDirty()){
+        foreach($recipeFields as $itemJson)
+        {
+            if(!$recipe->items->contains($itemJson['id'])){
+                $item = Item::create($itemJson);
                 $recipe->items()->save($item);
             }
         }

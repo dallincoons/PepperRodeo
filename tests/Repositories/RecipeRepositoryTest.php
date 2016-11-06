@@ -61,7 +61,7 @@ class RecipeRepositoryTest extends TestCase
         $newDirections = str_random();
         RecipeRepository::updateRecipe($recipe, [
             'title' => $newTitle,
-            'category' => $newCategory,
+            'recipe_category_id' => $newCategory,
             'directions' => $newDirections
         ]);
 
@@ -153,6 +153,6 @@ class RecipeRepositoryTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals(3, $recipe->fresh()->items->count());
+        $this->assertEquals(2, $recipe->fresh()->items->count());
     }
 }
