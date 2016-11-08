@@ -9,7 +9,6 @@
         <ul>
             <li><a href="/recipe/create"><i class="fa fa-cart-plus"></i></a></li>
             <li><a href="{{$recipe->getKey()}}/edit"><i class="fa fa-pencil"></i></a></li>
-            <li><a><i class="fa fa-users"></i></a></li>
             <li><form action="/recipe/{{$recipe->id}}" method="POST" id="recipe-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

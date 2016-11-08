@@ -1,6 +1,6 @@
 export default {
     methods : {
-        deleteRecipes : function(recipeIds){
+        deleteRecipes : function(){
             document.getElementById("deleteForm").submit();
         }
     }

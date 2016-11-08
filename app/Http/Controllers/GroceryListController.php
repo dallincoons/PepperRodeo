@@ -128,4 +128,16 @@ class GroceryListController extends Controller
 
         return redirect('/grocerylist');
     }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMultiple()
+    {
+        GroceryList::destroy(\Request::input('listIds'));
+
+        return redirect('/grocerylist');
+    }
 }

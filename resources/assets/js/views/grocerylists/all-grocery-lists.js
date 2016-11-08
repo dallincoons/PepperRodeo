@@ -1,4 +1,7 @@
     export default {
-        created () {
+        methods : {
+            deleteLists : function(){
+                document.getElementById("deleteForm").submit();
+            }
         }
     }

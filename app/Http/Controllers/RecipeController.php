@@ -133,7 +133,6 @@ class RecipeController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroyMultiple()
