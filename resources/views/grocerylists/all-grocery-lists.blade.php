@@ -3,11 +3,16 @@
 @section('content')
     <div class="grocery-lists">
 
+    <form method="POST" action="/grocerylist/deleteMultiple" id="deleteForm">
+
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
         <h2 class="page-title">My Lists</h2>
         <nav class="mini-nav">
             <ul>
                 <li><a href="/grocerylist/create"><i class="fa fa-plus"></i></a></li>
-                <li><a><i class="fa fa-trash"></i></a></li>
+                <li><a v-on:click="deleteLists()"><i class="fa fa-trash"></i></a></li>
             </ul>
         </nav>
 
@@ -22,6 +27,8 @@
                 <li></li>
             @endforeach
         </ul>
+    </form>
+
     </div>
 
 @endsection

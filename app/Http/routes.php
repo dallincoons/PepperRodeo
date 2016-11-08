@@ -20,10 +20,12 @@ Route::group(['middleware' => ['web']], function() {
 
 Route::group(['middleware' => ['web', 'auth']], function(){
 
-    Route::delete('deleteMultiple', 'RecipeController@destroyMultiple');
+    Route::delete('recipe/deleteMultiple', 'RecipeController@destroyMultiple');
     Route::resource('recipe', 'RecipeController');
 
+    Route::delete('grocerylist/deleteMultiple', 'GroceryListController@destroyMultiple');
     Route::get('/grocerylist/{grocerylist}/add/{recipe}', 'GroceryListController@manage');
     Route::resource('grocerylist', 'GroceryListController');
+
 
 });
