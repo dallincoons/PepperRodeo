@@ -10,6 +10,8 @@ class Item extends Model
 {
     protected $fillable = array('quantity', 'name', 'type', 'recipe_id', 'grocery_list_id', 'item_category_id');
 
+    protected $appends = ['recipe_id'];
+
     public function recipe()
     {
         return $this->morphedByMany(Recipe::class, 'itemable');
@@ -23,5 +25,14 @@ class Item extends Model
     public function itemable()
     {
         return $this->morphTo();
+    }
+
+    public function getRecipeIdAttribute()
+    {
+        if($this->recipe()->first()){
+            return $this->recipe()->first()->id;
+        }
+
+        return null;
     }
 }

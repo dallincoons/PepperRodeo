@@ -43,10 +43,7 @@ export default {
             recipeIds.forEach(function (recipeId) {
                 self.addedRecipes.push(self.unaddedRecipes[recipeId]);
                 var recipe = self.unaddedRecipes[recipeId];
-                recipe.items.forEach(function(item){
-                    item.recipe_id = recipe.id;
-                    self.items.push(item);
-                });
+                Array.prototype.push.apply( self.items, recipe.items);
                 self.recipesToAdd = [];
                 delete self.unaddedRecipes[recipeId];
             });

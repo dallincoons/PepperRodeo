@@ -86,8 +86,11 @@ class GroceryListController extends Controller
      */
     public function edit(GroceryList $grocerylist)
     {
+        $recipes = \Auth::user()->recipes()->with('items')->get();
+
         JavaScript::put(['items' => $grocerylist->items]);
         JavaScript::put(['addedRecipes' => $grocerylist->recipes]);
+        JavaScript::put(['recipes' => $recipes->keyBy('id')]);
 
         return view('grocerylists.edit-grocery-list', compact('grocerylist'));
     }

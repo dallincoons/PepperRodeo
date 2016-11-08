@@ -2,11 +2,10 @@
 
 @section('content')
     <div class="create-list" v-if="!showRecipes">
-        <h2 class="page-title">Create List</h2>
-    {!! Form::model($grocerylist, ['method' => 'POST', 'route' => ['grocerylist.update', $grocerylist->id]]) !!}
-        @include('grocerylists.includes.list-form')
-    {{Form::close()}}
-
+        <h2 class="page-title">Edit List</h2>
+        {!! Form::model($grocerylist, ['method' => 'POST', 'route' => ['grocerylist.update', $grocerylist->id]]) !!}
+            @include('grocerylists.includes.list-form')
+        {{Form::close()}}
     </div>
     <div v-if="showRecipes" class="choose-recipe">
         <h3 class="page-title">My Recipes</h3>
@@ -25,11 +24,7 @@
                 <button v-on:click="setShowRecipes(false)" class="pr-button save-button"><i class="fa fa-chevron-circle-left"></i> Back</button>
                 <button v-on:click="addRecipes(recipesToAdd)" class="pr-button save-button"> Add <i class="fa fa-plus-circle"></i></button>
             </div>
-
-
         </div>
-
-
     </div>
 
 @endsection
