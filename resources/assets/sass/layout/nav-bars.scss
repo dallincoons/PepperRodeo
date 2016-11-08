@@ -29,30 +29,13 @@
   font-size: 1.5em;
 }
 
-//Brand Bar
-.brand {
-  background: #ff4b2e;
-  height: 20%;
-}
 
-
-.brand h3 {
-  font-family: 'Leckerli One', cursive;
-  color: #ffffff;
-  text-align: center;
-  margin: 0;
-  padding: 5px;
-
-}
 
 //Footer Navigation
 
-.pr-content {
-  flex: 1 1 auto;
-  overflow-y: scroll;
-}
 
-.pr-nav {
+
+.l-pr-nav {
   bottom: 0;
   margin-bottom: 0;
   position: absolute;
@@ -63,23 +46,23 @@
   z-index: 999;
 }
 
-.pr-nav ul {
+.l-pr-nav > ul {
   display: flex;
 }
 
-.pr-nav li {
+.l-nav-item {
   list-style: none;
   flex: 1 1 auto;
   padding-top: 10px;
 
 }
 
-.pr-nav i {
+.l-nav-item  i {
   font-size: 2.5em;
   color: #acacac;
 }
 
-.pr-nav .active i{
+ .active  i{
   color: #ff4b2e;
 }
 

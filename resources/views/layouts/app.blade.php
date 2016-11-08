@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 
 </head>
-<body class="pepper_rodeo_body">
-    <div class="pr-content">
+<body class="l-pepper_rodeo_body">
+    <div class="l-pr-content">
         @unless(!\Auth::user())
             @include('includes.nav')
         @endunless
