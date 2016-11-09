@@ -12,14 +12,20 @@ class RecipeCategorySeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
 
-        foreach(range(1, 8) as $index){
+        $names = [
+            'Favorites',
+            'Want to Try',
+            'Crockpot',
+            'Fresh veggies',
+        ];
+
+        foreach($names as $name){
 
             RecipeCategory::create([
-                'name' => $faker->name
+                'user_id' => 1,
+                'name' => $name
             ]);
-
         }
 
     }
