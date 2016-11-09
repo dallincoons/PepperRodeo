@@ -1,15 +1,16 @@
 export default {
-    data : function(){
+    data    : function () {
         return {
-            items : PepperRodeo.items,
+            items          : PepperRodeo.items,
             title          : '',
-            addedRecipes : PepperRodeo.addedRecipes,
+            addedRecipes   : PepperRodeo.addedRecipes,
             unaddedRecipes : Object.assign({}, PepperRodeo.recipes),
             showRecipes    : false,
             recipesToAdd   : [],
+            addAnItem      : false
         }
     },
-    methods  : {
+    methods : {
         setShowRecipes($bool) {
             this.showRecipes = $bool;
         },
@@ -39,7 +40,7 @@ export default {
             recipeIds.forEach(function (recipeId) {
                 self.addedRecipes.push(self.unaddedRecipes[recipeId]);
                 var recipe = self.unaddedRecipes[recipeId];
-                Array.prototype.push.apply( self.items, recipe.items);
+                Array.prototype.push.apply(self.items, recipe.items);
                 self.recipesToAdd = [];
                 delete self.unaddedRecipes[recipeId];
             });
