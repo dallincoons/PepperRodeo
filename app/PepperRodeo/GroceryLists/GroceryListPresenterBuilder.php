@@ -1,7 +1,7 @@
 <?php namespace App\PepperRodeo\GroceryLists;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\GroceryList;
+use App\ItemCategory;
 use App\Item;
 
 class GroceryListPresenterBuilder
@@ -66,7 +66,13 @@ class GroceryListPresenterBuilder
     {
         $newCollection = new Collection();
         if(is_object($likeItems->first())) {
-            $newCollection->add(new Item(['name' => $likeItems->first()->name, 'quantity' => $likeItems->sum('quantity'), 'type' => $likeItems->first()->type]));
+            $newCollection->add(new Item([
+                'name' => $likeItems->first()->name,
+                'quantity' => $likeItems->sum('quantity'),
+                'type' => $likeItems->first()->type,
+                'item_category_id' => $likeItems->first()->item_category_id,
+                'category' => $likeItems->first()->category
+            ]));
         }
 
         foreach ($likeItems->pluck('id') as $id) {

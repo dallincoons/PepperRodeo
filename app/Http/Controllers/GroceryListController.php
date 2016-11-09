@@ -73,7 +73,7 @@ class GroceryListController extends Controller
      */
     public function show(GroceryList $grocerylist, GroceryListPresenterBuilder $listBuilder)
     {
-        $grocerylist = $listBuilder->build($grocerylist);
+        $grocerylist = $listBuilder->build($grocerylist)->byCategory();
 
         return view('grocerylists.single-grocery-list', compact('grocerylist'));
     }

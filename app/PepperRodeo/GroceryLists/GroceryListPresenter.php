@@ -4,6 +4,7 @@
 namespace App\PepperRodeo\GroceryLists;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use App\ItemCategory;
 
 class GroceryListPresenter extends Model
 {
@@ -26,5 +27,12 @@ class GroceryListPresenter extends Model
         $this->items->add($item);
 
         return $this->items;
+    }
+
+    public function byCategory()
+    {
+        $this->items = $this->items->groupBy('category');
+
+        return $this;
     }
 }

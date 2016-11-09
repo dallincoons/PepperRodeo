@@ -8,7 +8,7 @@ use App\GroceryList;
 
 class Item extends Model
 {
-    protected $fillable = array('quantity', 'name', 'type', 'recipe_id', 'grocery_list_id', 'item_category_id');
+    protected $fillable = array('quantity', 'name', 'type', 'recipe_id', 'grocery_list_id', 'item_category_id', 'category');
 
     protected $appends = ['recipe_id'];
 
@@ -31,6 +31,15 @@ class Item extends Model
     {
         if($this->recipe()->first()){
             return $this->recipe()->first()->id;
+        }
+
+        return null;
+    }
+
+    public function getCategoryAttribute()
+    {
+        if($this->item_category_id){
+            return ItemCategory::find($this->item_category_id)->name;
         }
 
         return null;
