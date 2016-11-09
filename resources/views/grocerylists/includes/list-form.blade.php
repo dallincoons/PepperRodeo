@@ -51,6 +51,7 @@
                 <input type="hidden" name="items[@{{$index}}][quantity]" value="@{{ item.quantity }}">
                 <input type="hidden" name="items[@{{$index}}][name]" value="@{{ item.name }}">
                 <input type="hidden" name="items[@{{$index}}][item_category_id]" value="@{{ item.item_category_id }}">
+                <input type="hidden" name="items[@{{$index}}][id]" value="@{{ item.id }}">
             </li>
         </ul>
     </ul>

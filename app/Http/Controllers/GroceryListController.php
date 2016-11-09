@@ -105,15 +105,11 @@ class GroceryListController extends Controller
      */
     public function update(Request $request, GroceryList $grocerylist)
     {
-        if($itemIds = $request->input('items')){
-            $itemIds = array_keys($request->input('items'));
-        }
+        $itemIds = collect($request->input('items'))->pluck('id');
 
-        $items = Item::find($itemIds);
+        $grocerylist->items()->sync($itemIds->toArray());
 
-        $grocerylist->items()->saveMany($items);
-
-        return view('grocerylists.single-grocery-list', compact('grocerylist'));
+        return redirect('/grocerylist/' . $grocerylist->getKey());
     }
 
     /**

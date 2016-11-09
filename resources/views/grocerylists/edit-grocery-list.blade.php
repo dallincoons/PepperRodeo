@@ -4,6 +4,7 @@
     <div class="create-list" v-if="!showRecipes">
         <h2 class="page-title">Edit List</h2>
         {!! Form::model($grocerylist, ['method' => 'POST', 'route' => ['grocerylist.update', $grocerylist->id]]) !!}
+            {!! method_field('patch') !!}
             @include('grocerylists.includes.list-form')
         {{Form::close()}}
     </div>
