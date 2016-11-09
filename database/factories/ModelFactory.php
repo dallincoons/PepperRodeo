@@ -36,7 +36,7 @@ $factory->define(App\Item::class, function (Faker\Generator $faker) use($randInd
         'type' => collect(['pkg', 'can', 'bottle', 'jug'])->random(),
         'isCheckedOff' => 0,
         'remember_token' => str_random(10),
-        'item_category_id' => ItemCategory::skip($randIndex)->take(1)->first()->getKey()
+        'item_category_id' => ItemCategory::inRandomOrder()->get()->first()->getKey()
     ];
 });
 

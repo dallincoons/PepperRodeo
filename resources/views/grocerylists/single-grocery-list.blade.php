@@ -20,19 +20,20 @@
             <a class="toggle-active">By Items</a><a class="toggle-inactive">By Recipe</a>
         </div>
 
-        <div class="category-wrapper">
-            <ul class="category">
-                <li class="category-title"><h3>Dairy</h3></li>
-                <li>
-                    <ul class="recipes list-items">
-                        @foreach($grocerylist->items as $list_item)
-                            <li>{{$list_item->quantity}} {{$list_item->type}} {{$list_item->name}}</li>
-                        @endforeach
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
+        @foreach($grocerylist->items as $category => $list_items)
+            <div class="category-wrapper">
+                <ul class="category">
+                    <li class="category-title"><h3>{{$category}}</h3></li>
+                    <li>
+                        <ul class="recipes list-items">
+                            @foreach($list_items as $item)
+                                <li>{{$item->quantity}} {{$item->type}} {{$item->name}}</li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        @endforeach
     </div>
 
 @endsection
