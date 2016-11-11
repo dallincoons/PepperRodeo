@@ -25,14 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
 
-            $lists = Auth::user()->groceryLists()->latest()->take(2)->get();
+        $lists = Auth::user()->groceryLists()->latest()->take(2)->get();
 
-            return view('home.welcome', compact('lists'));
+        return view('home.welcome', compact('lists'));
 
-        }
-
-        return view('home.welcome');
     }
 }
