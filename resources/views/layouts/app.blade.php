@@ -17,22 +17,40 @@
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 
 </head>
-<body class="pepper_rodeo_body">
-    <div class="pr-content">
+<body>
+
+    <aside id="large-sidebar">
+
         @unless(!\Auth::user())
             @include('includes.nav')
         @endunless
+
+            @unless(!\Auth::user())
+                @include('includes.footer')
+            @endunless
+
+    </aside>
+
+    <div id="main-content">
+
+        <header id="header-mobile">
+            <h1>Pepper Rodeo</h1>
+        </header>
 
         <component is="{{$vue or 'Default'}}" inline-template>
             @yield('content')
         </component>
 
-
     </div>
 
-    @unless(!\Auth::user())
-        @include('includes.footer')
-    @endunless
+    <nav id="nav-mobile">
+        @unless(!\Auth::user())
+            @include('includes.nav')
+        @endunless
+    </nav>
+
+
+
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
